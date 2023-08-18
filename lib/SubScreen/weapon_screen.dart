@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/item_pair_dto.dart';
@@ -11,9 +12,11 @@ import 'package:katepnha/DTO/weapon_list_dto.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
 class WeaponScreen extends StatelessWidget {
+  const WeaponScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -22,6 +25,8 @@ class WeaponScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(3, context);
@@ -29,6 +34,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatefulWidget {
+  const Contents({super.key});
+
   @override
   State<StatefulWidget> createState() => _ContentsState();
 }
@@ -479,6 +486,7 @@ class _ContentsState extends State<Contents> {
           }
         }
       }
+      saveGlobalVars();
     });
   }
 
@@ -508,6 +516,7 @@ class _ContentsState extends State<Contents> {
                     if (weaponLevelMap[weapon.id]![2]! < value) {
                       weaponLevelMap[weapon.id]![2] = value;
                     }
+                    saveGlobalVars();
                   });
                 },
                 isExpanded: true,
@@ -536,6 +545,7 @@ class _ContentsState extends State<Contents> {
                     if (weaponLevelMap[weapon.id]![1]! > value) {
                       weaponLevelMap[weapon.id]![1] = value;
                     }
+                    saveGlobalVars();
                   });
                 },
                 isExpanded: true,
@@ -557,6 +567,7 @@ class _ContentsState extends State<Contents> {
       } else {
         weaponStarFilter = i;
       }
+      saveGlobalVars();
     });
   }
 
@@ -567,6 +578,7 @@ class _ContentsState extends State<Contents> {
       } else {
         weaponFilter = i;
       }
+      saveGlobalVars();
     });
   }
 
@@ -680,6 +692,7 @@ class _ContentsState extends State<Contents> {
           needNumMap[thisItem] = needNumMap[thisItem]! - itemPair.num.round();
         }
       }
+      saveGlobalVars();
     });
   }
 }

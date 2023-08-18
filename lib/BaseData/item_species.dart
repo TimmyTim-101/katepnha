@@ -55,3 +55,16 @@ List<DungeonDTO> allDungeon = [
 Map<ItemDTO, ItemDTO> mergeMap = {};
 Map<ItemDTO, ItemDTO> reverseMergeMap = {};
 Map<int, List<ItemDTO>> birthdayCharacterMap = {};
+
+ItemDTO getItemDTO(int id){
+  for (final e in allCharacter) {
+    if(e.id == id) return e;
+  }
+  for(final e in allWeapon){
+    if(e.id == id) return e;
+  }
+  for(final e in allMaterial){
+    if(e.id == id) return e;
+  }
+  return iNull;
+}

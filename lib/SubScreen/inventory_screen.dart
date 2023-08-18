@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/BaseData/constants.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/material_dto.dart';
@@ -10,9 +11,11 @@ import 'package:katepnha/SubScreen/navigation_screen.dart';
 import 'package:katepnha/Utils/lack_calculate.dart';
 
 class InventoryScreen extends StatelessWidget {
+  const InventoryScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -21,6 +24,8 @@ class InventoryScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(4, context);
@@ -28,6 +33,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatefulWidget {
+  const Contents({super.key});
+
   @override
   State<StatefulWidget> createState() => _ContentsState();
 }
@@ -211,6 +218,7 @@ class _ContentsState extends State<Contents> {
       } else {
         inventoryDisplay = i;
       }
+      saveGlobalVars();
     });
   }
 
@@ -287,6 +295,7 @@ class _ContentsState extends State<Contents> {
       } else {
         haveNumMap[item] = int.parse(num);
       }
+      saveGlobalVars();
     });
   }
 
@@ -302,6 +311,7 @@ class _ContentsState extends State<Contents> {
         haveNumMap[item] = thisHave - 1;
       }
       allController[item]?.text = haveNumMap[item].toString();
+      saveGlobalVars();
     });
   }
 
@@ -315,6 +325,7 @@ class _ContentsState extends State<Contents> {
       }
       haveNumMap[item] = thisHave! + 1;
       allController[item]?.text = haveNumMap[item].toString();
+      saveGlobalVars();
     });
   }
 
@@ -338,6 +349,7 @@ class _ContentsState extends State<Contents> {
       }
       allController[item1]?.text = haveNumMap[item1].toString();
       allController[item2]?.text = haveNumMap[item2].toString();
+      saveGlobalVars();
     });
   }
 

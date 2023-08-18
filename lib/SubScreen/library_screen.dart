@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
 class LibraryScreen extends StatelessWidget {
+  const LibraryScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -16,6 +19,8 @@ class LibraryScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(7, context);
@@ -23,6 +28,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatefulWidget {
+  const Contents({super.key});
+
   @override
   State<StatefulWidget> createState() => _ContentsState();
 }
@@ -170,6 +177,7 @@ class _ContentsState extends State<Contents> {
       } else {
         databaseDisplay = i;
       }
+      saveGlobalVars();
     });
   }
 }

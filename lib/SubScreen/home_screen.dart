@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/DTO/character_dto.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  void initial() {
+    // 尝试获取配置
+    loadGlobalVarsFromFile();
+    readGlobalVars();
+    setGlobalVarsJsonString(tmp);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    initial();
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -17,6 +28,8 @@ class HomeScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(1, context);
@@ -24,6 +37,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatelessWidget {
+  const Contents({super.key});
+
   void initial() {
     if (birthdayCharacterMap.isEmpty) {
       for (final c in allCharacter) {
@@ -117,7 +132,10 @@ class Contents extends StatelessWidget {
       }
     }
     return SizedBox(
-      width: MediaQuery.of(context).size.width - 200,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width - 200,
       child: Material(
         color: backColor(),
         child: ListView(
@@ -139,6 +157,32 @@ class Contents extends StatelessWidget {
                     Container(margin: const EdgeInsets.all(8), child: customText('有了KatepиHa，你可有事干了！')),
                   ],
                 ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+              height: 40,
+              child: Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    color: unLackColor(),
+                    width: 150,
+                    child: MaterialButton(
+                      onPressed: _downloadConfig,
+                      child: customText('下载数据'),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    color: unLackColor(),
+                    width: 150,
+                    child: MaterialButton(
+                      onPressed: _uploadConfig,
+                      child: customText('上传数据'),
+                    ),
+                  ),
+                ],
               ),
             ),
             customDivider(),
@@ -166,6 +210,11 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
+                    child: customText('23-08-19：新增数据持久化，修复材料展示顺序问题。', Colors.white, 15),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
                     child: customText('23-08-18：适配4.0数据，修复若干bug。', Colors.white, 15),
                   ),
                   Container(
@@ -181,5 +230,13 @@ class Contents extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _downloadConfig() {
+    saveGlobalVarsToFile();
+  }
+
+  void _uploadConfig() {
+    loadGlobalVarsFromFile();
   }
 }

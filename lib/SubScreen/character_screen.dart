@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/DTO/character_dto.dart';
 import 'package:katepnha/DTO/item_dto.dart';
@@ -10,9 +11,11 @@ import 'package:katepnha/DTO/plan_dto.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
 class CharacterScreen extends StatelessWidget {
+  const CharacterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -21,6 +24,8 @@ class CharacterScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(2, context);
@@ -28,6 +33,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatefulWidget {
+  const Contents({super.key});
+
   @override
   State<StatefulWidget> createState() => _ContentsState();
 }
@@ -373,6 +380,7 @@ class _ContentsState extends State<Contents> {
                         }
                       }
                     }
+                    saveGlobalVars();
                   });
                 },
                 isExpanded: true,
@@ -431,6 +439,7 @@ class _ContentsState extends State<Contents> {
                         }
                       }
                     }
+                    saveGlobalVars();
                   });
                 },
                 isExpanded: true,
@@ -452,6 +461,7 @@ class _ContentsState extends State<Contents> {
       } else {
         characterElementFilter = i;
       }
+      saveGlobalVars();
     });
   }
 
@@ -462,6 +472,7 @@ class _ContentsState extends State<Contents> {
       } else {
         characterWeaponFilter = i;
       }
+      saveGlobalVars();
     });
   }
 }

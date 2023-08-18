@@ -20,7 +20,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             padding: const EdgeInsets.all(10),
             child: InkWell(
               onTap: () {
-                Navigator.of(context).push(CustomRoute(HomeScreen()));
+                Navigator.of(context).push(CustomRoute(const HomeScreen()));
               },
               child: Image.asset('images/KatepиHa_title.png'),
             ),
@@ -34,7 +34,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('角色', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(CharacterScreen()));
+              Navigator.of(context).push(CustomRoute(const CharacterScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 2,
@@ -47,7 +47,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('武器', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(WeaponScreen()));
+              Navigator.of(context).push(CustomRoute(const WeaponScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 3,
@@ -60,7 +60,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('背包', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(InventoryScreen()));
+              Navigator.of(context).push(CustomRoute(const InventoryScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 4,
@@ -73,7 +73,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('事件', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(ActionScreen()));
+              Navigator.of(context).push(CustomRoute(const ActionScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 5,
@@ -86,7 +86,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('规划', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(PlanScreen()));
+              Navigator.of(context).push(CustomRoute(const PlanScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 6,
@@ -99,7 +99,7 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
             ),
             title: customText('数据库', Colors.white70),
             onTap: () {
-              Navigator.of(context).push(CustomRoute(LibraryScreen()));
+              Navigator.of(context).push(CustomRoute(const LibraryScreen()));
             },
             selectedTileColor: selectedColor(),
             selected: i == 7,

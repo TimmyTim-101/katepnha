@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
+import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/Utils/number_convert.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/DTO/character_dto.dart';
@@ -16,9 +17,11 @@ import 'package:katepnha/SubScreen/navigation_screen.dart';
 import 'package:katepnha/Utils/lack_calculate.dart';
 
 class ActionScreen extends StatelessWidget {
+  const ActionScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
         children: [Navigation(), Contents()],
       ),
@@ -27,6 +30,8 @@ class ActionScreen extends StatelessWidget {
 }
 
 class Navigation extends StatelessWidget {
+  const Navigation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(5, context);
@@ -34,6 +39,8 @@ class Navigation extends StatelessWidget {
 }
 
 class Contents extends StatefulWidget {
+  const Contents({super.key});
+
   @override
   State<StatefulWidget> createState() => _ContentsState();
 }
@@ -219,6 +226,7 @@ class _ContentsState extends State<Contents> {
       planList = [];
       planList.addAll(l1);
       planList.addAll(l2);
+      saveGlobalVars();
     });
   }
 
@@ -250,6 +258,7 @@ class _ContentsState extends State<Contents> {
       planList = [];
       planList.addAll(l1);
       planList.addAll(l2);
+      saveGlobalVars();
     });
   }
 
@@ -282,6 +291,7 @@ class _ContentsState extends State<Contents> {
       planList = [];
       planList.addAll(l1);
       planList.addAll(l2);
+      saveGlobalVars();
     });
   }
 
@@ -308,6 +318,7 @@ class _ContentsState extends State<Contents> {
       planList.removeAt(index);
       // 反馈给角色页
       feedback(thisPlan);
+      saveGlobalVars();
     });
   }
 
@@ -566,6 +577,7 @@ class _ContentsState extends State<Contents> {
       } else {
         haveNumMap[item] = int.parse(num);
       }
+      saveGlobalVars();
     });
   }
 
@@ -581,6 +593,7 @@ class _ContentsState extends State<Contents> {
         haveNumMap[item] = thisHave - 1;
       }
       allController[item]?.text = haveNumMap[item].toString();
+      saveGlobalVars();
     });
   }
 
@@ -594,6 +607,7 @@ class _ContentsState extends State<Contents> {
       }
       haveNumMap[item] = thisHave! + 1;
       allController[item]?.text = haveNumMap[item].toString();
+      saveGlobalVars();
     });
   }
 
@@ -617,6 +631,7 @@ class _ContentsState extends State<Contents> {
       }
       allController[item1]?.text = haveNumMap[item1].toString();
       allController[item2]?.text = haveNumMap[item2].toString();
+      saveGlobalVars();
     });
   }
 
