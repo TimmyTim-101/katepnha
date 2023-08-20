@@ -42,9 +42,11 @@ class Contents extends StatefulWidget {
 
 class _ContentsState extends State<Contents> {
   void initial() {
-    if (weaponLevelMap.isEmpty) {
+    if (weaponLevelMap.length != allWeapon.length) {
       for (final element in allWeapon) {
-        weaponLevelMap[element.id] = {1: 1, 2: 1};
+        if (!weaponLevelMap.containsKey(element)) {
+          weaponLevelMap[element.id] = {1: 1, 2: 1};
+        }
       }
     }
   }

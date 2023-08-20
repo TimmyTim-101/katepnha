@@ -44,21 +44,23 @@ class _ContentsState extends State<Contents> {
 
   void initial() {
     // 初始化合并关系map
-    if (mergeMap.isEmpty) {
-      for (final element in allGroup) {
-        final List<ItemDTO> thisGroupList = element.groupList;
-        for (int i = 0; i < thisGroupList.length - 1; i++) {
-          final ItemDTO littleItem = thisGroupList[i];
-          final ItemDTO bigItem = thisGroupList[i + 1];
+    for (final element in allGroup) {
+      final List<ItemDTO> thisGroupList = element.groupList;
+      for (int i = 0; i < thisGroupList.length - 1; i++) {
+        final ItemDTO littleItem = thisGroupList[i];
+        final ItemDTO bigItem = thisGroupList[i + 1];
+        if (!mergeMap.containsKey(bigItem)) {
           mergeMap[bigItem] = littleItem;
           reverseMergeMap[littleItem] = bigItem;
         }
       }
     }
     // 初始化输入框控制器
-    if (allController.isEmpty) {
+    if (allController.length != allMaterial.length) {
       for (final element in allMaterial) {
-        allController[element] = getController(element);
+        if (!allController.containsKey(element)) {
+          allController[element] = getController(element);
+        }
       }
     }
   }

@@ -40,12 +40,12 @@ class Contents extends StatelessWidget {
   const Contents({super.key});
 
   void initial() {
-    if (birthdayCharacterMap.isEmpty) {
+    if (birthdayCharacterMap.length != allCharacter.length) {
       for (final c in allCharacter) {
         c as CharacterDTO;
         final int thisBirthday = c.birthday;
         if (!birthdayCharacterMap.containsKey(thisBirthday)) {
-          birthdayCharacterMap[thisBirthday] = [];
+          birthdayCharacterMap[thisBirthday] = {};
         }
         birthdayCharacterMap[thisBirthday]!.add(c);
       }

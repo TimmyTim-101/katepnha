@@ -50,9 +50,11 @@ class _ContentsState extends State<Contents> {
 
   void initial() {
     // 初始化输入框控制器
-    if (allController.isEmpty) {
+    if (allController.length != allMaterial.length) {
       for (final element in allMaterial) {
-        allController[element] = getController(element);
+        if (!allController.containsKey(element)) {
+          allController[element] = getController(element);
+        }
       }
     }
   }
@@ -266,9 +268,9 @@ class _ContentsState extends State<Contents> {
     setState(() {
       final String thisId = planList[index].id;
       String postId = planList[planList.length - 1].id;
-      for(int i=planList.length-1;i>=0;i--){
+      for (int i = planList.length - 1; i >= 0; i--) {
         final PlanDTO p = planList[i];
-        if(p.id == thisId){
+        if (p.id == thisId) {
           break;
         }
         postId = p.id;
@@ -276,15 +278,15 @@ class _ContentsState extends State<Contents> {
       final List<PlanDTO> l1 = [];
       final List<PlanDTO> l2 = [];
       bool f = false;
-      for(final p in planList){
-        if(p.id == postId){
+      for (final p in planList) {
+        if (p.id == postId) {
           l1.add(p);
           f = true;
-        }else if(p.id == thisId){
+        } else if (p.id == thisId) {
           l2.add(p);
-        }else if(f == false){
+        } else if (f == false) {
           l1.add(p);
-        }else{
+        } else {
           l2.add(p);
         }
       }

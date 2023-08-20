@@ -54,7 +54,7 @@ List<DungeonDTO> allDungeon = [
 ];
 Map<ItemDTO, ItemDTO> mergeMap = {};
 Map<ItemDTO, ItemDTO> reverseMergeMap = {};
-Map<int, List<ItemDTO>> birthdayCharacterMap = {};
+Map<int, Set<ItemDTO>> birthdayCharacterMap = {};
 
 ItemDTO getItemDTO(int id){
   for (final e in allCharacter) {

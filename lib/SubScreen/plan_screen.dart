@@ -61,9 +61,11 @@ class _ContentsState extends State<Contents> {
 
   void initial() {
     // 初始化输入框控制器
-    if (allController.isEmpty) {
+    if (allController.length != allMaterial.length) {
       for (final element in allMaterial) {
-        allController[element] = getController(element);
+        if (!allController.containsKey(element)) {
+          allController[element] = getController(element);
+        }
       }
     }
   }
@@ -333,7 +335,7 @@ class _ContentsState extends State<Contents> {
     });
     resinTimer.isActive;
     final List<Widget> resinHintList = [];
-    for (int i = (resinNum / 20).ceil() * 20; i <= 160; i += 20) {
+    for (int i = (resinNum / 20).ceil() * 20 + 20; i <= 160; i += 20) {
       if (i == 0) continue;
       final int remainSeconds = (i - resinNum) * 8 * 60;
       final DateTime finishTime = refreshTime.add(Duration(seconds: remainSeconds));
