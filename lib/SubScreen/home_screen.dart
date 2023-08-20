@@ -210,6 +210,11 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
+                    child: customText('23-08-20：修复角色多莉星级显示错误的问题，修复版本更新后配置文件不通用的问题。', Colors.white, 15),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
                     child: customText('23-08-19：新增数据持久化，修复材料展示顺序问题。', Colors.white, 15),
                   ),
                   Container(
