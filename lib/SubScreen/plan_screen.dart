@@ -331,6 +331,9 @@ class _ContentsState extends State<Contents> {
           final int t = (diff / plusDuration).floor();
           refreshTime = refreshTime.add(Duration(seconds: plusDuration * t));
           resinNum = resinNum + t;
+          if(resinNum >= 160){
+            resinNum = 160;
+          }
           _refresh();
         }
       }
@@ -590,10 +593,10 @@ class _ContentsState extends State<Contents> {
 
   void _changeResinNum(int num) {
     setState(() {
-      resinNum = max(0, resinNum + num);
-      if (num == 1 || num == -1) {
+      if (num == 1 || num == -1 || resinNum >= 160) {
         refreshTime = DateTime.now();
       }
+      resinNum = max(0, resinNum + num);
       saveGlobalVars();
     });
   }

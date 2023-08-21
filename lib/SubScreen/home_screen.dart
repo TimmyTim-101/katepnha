@@ -210,7 +210,7 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
-                    child: customText('23-08-21：修复规划页面树脂显示延迟与错误的问题。', Colors.white, 15),
+                    child: customText('23-08-21：修复规划页面树脂显示延迟等问题。', Colors.white, 15),
                   ),
                   Container(
                     margin: const EdgeInsets.all(5),
