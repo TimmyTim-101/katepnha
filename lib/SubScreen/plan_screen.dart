@@ -326,17 +326,18 @@ class _ContentsState extends State<Contents> {
     final Timer resinTimer = Timer.periodic(Duration(seconds: refreshDuration), (timer) {
       if (resinNum <= 160) {
         final DateTime now = DateTime.now();
-        if (now.difference(refreshTime).inSeconds >= plusDuration) {
-          refreshTime = refreshTime.add(Duration(seconds: plusDuration));
-          resinNum = resinNum + 1;
+        final diff = now.difference(refreshTime).inSeconds - plusDuration;
+        if (diff >= 0) {
+          final int t = (diff / plusDuration).floor();
+          refreshTime = refreshTime.add(Duration(seconds: plusDuration * t));
+          resinNum = resinNum + t;
           _refresh();
         }
       }
     });
     resinTimer.isActive;
     final List<Widget> resinHintList = [];
-    for (int i = (resinNum / 20).ceil() * 20 + 20; i <= 160; i += 20) {
-      if (i == 0) continue;
+    for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
       final int remainSeconds = (i - resinNum) * 8 * 60;
       final DateTime finishTime = refreshTime.add(Duration(seconds: remainSeconds));
       final String thisRemainHint = durationConvert(remainSeconds);
