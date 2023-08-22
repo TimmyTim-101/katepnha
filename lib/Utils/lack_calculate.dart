@@ -8,7 +8,7 @@ int have(ItemDTO item) {
   int haveNum = 0;
   if (haveNumMap.containsKey(item)) {
     haveNum = haveNumMap[item]!;
-  }else{
+  } else {
     haveNumMap[item] = 0;
   }
   return haveNum;
@@ -18,7 +18,7 @@ int need(ItemDTO item) {
   int needNum = 0;
   if (needNumMap.containsKey(item)) {
     needNum = needNumMap[item]!;
-  }else{
+  } else {
     needNumMap[item] = 0;
   }
   return needNum;

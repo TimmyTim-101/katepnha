@@ -18,7 +18,7 @@ class ItemPairDTO {
 
   static List<ItemPairDTO> pairListExtra(List<List<ItemPairDTO>> l) {
     final List<ItemPairDTO> res = [];
-    for(int i=0;i<l.length;i++){
+    for (int i = 0; i < l.length; i++) {
       res.addAll(l[i]);
     }
     return res;

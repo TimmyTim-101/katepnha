@@ -145,10 +145,7 @@ class Contents extends StatelessWidget {
       }
     }
     return SizedBox(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width - 200,
+      width: MediaQuery.of(context).size.width - 200,
       child: Material(
         color: backColor(),
         child: ListView(

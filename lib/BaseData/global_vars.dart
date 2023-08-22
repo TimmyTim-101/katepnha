@@ -72,7 +72,7 @@ Map<String, dynamic> toJson() {
 
   final List<Map<String, dynamic>> weaponList_ = [];
   for (final e in weaponList) {
-    final Map<String,dynamic> m = <String, dynamic>{};
+    final Map<String, dynamic> m = <String, dynamic>{};
     m['id'] = e.id;
     m['weapon'] = e.weapon.id;
     m['lowerBound'] = e.lowerBound;
@@ -89,7 +89,7 @@ Map<String, dynamic> toJson() {
 
   final List<Map<String, dynamic>> planList_ = [];
   for (final e in planList) {
-    final Map<String,dynamic> m = <String, dynamic>{};
+    final Map<String, dynamic> m = <String, dynamic>{};
     m['id'] = e.id;
     m['item'] = e.item.id;
     m['planType'] = e.planType.toString();

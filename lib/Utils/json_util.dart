@@ -16,8 +16,8 @@ String getGlobalVarsJsonString() {
 }
 
 bool setGlobalVarsJsonString(String s) {
-  try{
-    final Map<String,dynamic> m = jsonDecode(s);
+  try {
+    final Map<String, dynamic> m = jsonDecode(s);
 
     haveNumMap = {};
     final Map<String, dynamic> haveNumMap_ = m['haveNumMap'];
@@ -35,7 +35,7 @@ bool setGlobalVarsJsonString(String s) {
     final Map<String, dynamic> characterLevelMap_ = m['characterLevelMap'];
     characterLevelMap_.forEach((k, v) {
       characterLevelMap[int.parse(k)] = {};
-      v as Map<String,dynamic>;
+      v as Map<String, dynamic>;
       v.forEach((kk, vv) {
         characterLevelMap[int.parse(k)]![int.parse(kk)] = vv;
       });
@@ -46,17 +46,17 @@ bool setGlobalVarsJsonString(String s) {
     characterWeaponFilter = m['characterWeaponFilter'];
 
     weaponLevelMap = {};
-    final Map<String,dynamic> weaponLevelMap_ = m['weaponLevelMap'];
+    final Map<String, dynamic> weaponLevelMap_ = m['weaponLevelMap'];
     weaponLevelMap_.forEach((k, v) {
       weaponLevelMap[int.parse(k)] = {};
-      v as Map<String,dynamic>;
+      v as Map<String, dynamic>;
       v.forEach((kk, vv) {
         weaponLevelMap[int.parse(k)]![int.parse(kk)] = vv;
       });
     });
 
     weaponList = [];
-    for(final Map<String, dynamic> mm in m['weaponList']){
+    for (final Map<String, dynamic> mm in m['weaponList']) {
       final String thisId = mm['id'];
       final ItemDTO thisWeapon = getItemDTO(mm['weapon']);
       final int thisLowerBound = mm['lowerBound'];
@@ -72,37 +72,48 @@ bool setGlobalVarsJsonString(String s) {
     inventoryDisplay = m['inventoryDisplay'];
 
     planList = [];
-    for(final Map<String,dynamic> mm in m['planList']){
+    for (final Map<String, dynamic> mm in m['planList']) {
       final String id = mm['id'];
       final ItemDTO item = getItemDTO(mm['item']);
       PlanType planType = PlanType.unknown;
       final String planType_ = mm['planType'];
-      switch(planType_){
-        case 'PlanType.characterLevel':planType = PlanType.characterLevel;break;
-        case 'PlanType.characterTalent1':planType = PlanType.characterTalent1;break;
-        case 'PlanType.characterTalent2':planType = PlanType.characterTalent2;break;
-        case 'PlanType.characterTalent3':planType = PlanType.characterTalent3;break;
-        case 'PlanType.weaponLevel':planType = PlanType.weaponLevel;break;
-        case 'PlanType.pick':planType = PlanType.pick;break;
-        default:break;
+      switch (planType_) {
+        case 'PlanType.characterLevel':
+          planType = PlanType.characterLevel;
+          break;
+        case 'PlanType.characterTalent1':
+          planType = PlanType.characterTalent1;
+          break;
+        case 'PlanType.characterTalent2':
+          planType = PlanType.characterTalent2;
+          break;
+        case 'PlanType.characterTalent3':
+          planType = PlanType.characterTalent3;
+          break;
+        case 'PlanType.weaponLevel':
+          planType = PlanType.weaponLevel;
+          break;
+        case 'PlanType.pick':
+          planType = PlanType.pick;
+          break;
+        default:
+          break;
       }
       final int num = mm['num'];
-      final PlanDTO thisPlanDTO = PlanDTO(id,item,planType,num);
+      final PlanDTO thisPlanDTO = PlanDTO(id, item, planType, num);
       planList.add(thisPlanDTO);
     }
 
-     refreshDuration = m['refreshDuration'];
+    refreshDuration = m['refreshDuration'];
 
-     plusDuration = m['plusDuration'];
+    plusDuration = m['plusDuration'];
 
-     resinNum = m['resinNum'];
+    resinNum = m['resinNum'];
 
-     refreshTime = DateTime.parse(m['refreshTime']);
+    refreshTime = DateTime.parse(m['refreshTime']);
 
-     databaseDisplay = m['databaseDisplay'];
-
-  }
-  catch(e){
+    databaseDisplay = m['databaseDisplay'];
+  } catch (e) {
     return false;
   }
   return true;
@@ -115,20 +126,18 @@ Future<void> saveGlobalVars() async {
   saveGlobalVarsToFile();
 }
 
-Future<void> readGlobalVars() async{
+Future<void> readGlobalVars() async {
   final prefs = await SharedPreferences.getInstance();
   final result = prefs.getString('config');
-  tmp =  result ?? '';
+  tmp = result ?? '';
 }
 
-Future<void> _downloadConfig() async {
+void saveGlobalVarsToFile() {
   const String configAddress = '.';
   final String configString = getGlobalVarsJsonString();
   try {
     final File f = File('$configAddress/KatepиHa_config.json');
-    if((await f.exists()) == false){
-      f.create();
-    }
+    f.create();
     final IOSink sink = f.openWrite();
     sink.write(configString);
     sink.close();
@@ -137,19 +146,14 @@ Future<void> _downloadConfig() async {
   }
 }
 
-void saveGlobalVarsToFile() {
-  _downloadConfig();
-}
-
-void loadGlobalVarsFromFile(){
+void loadGlobalVarsFromFile() {
   const String configAddress = '.';
   try {
     final File f = File('$configAddress/KatepиHa_config.json');
     f.readAsString().then((String s) {
       setGlobalVarsJsonString(s);
     });
-  }
-  catch(e){
+  } catch (e) {
     return;
   }
 }

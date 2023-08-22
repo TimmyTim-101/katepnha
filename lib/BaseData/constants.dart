@@ -31,11 +31,11 @@ enum DungeonType { mora, exp, pick, monster, talent, weapon, boss, week, unknown
 
 // 秘境掉落概率
 final Map<DungeonType, List<double>> dungeonOddMap = {
-  DungeonType.monster:[1.0, 1.0, 1.0],
+  DungeonType.monster: [1.0, 1.0, 1.0],
   DungeonType.talent: [2.2, 1.98, 0.22],
   DungeonType.weapon: [2.2, 2.418, 0.62, 0.062],
-  DungeonType.boss:[2.1607, 1.5961, 0.144,0.0141],
-  DungeonType.week:[3.8343, 2.0423, 0.2556, 0.025],
+  DungeonType.boss: [2.1607, 1.5961, 0.144, 0.0141],
+  DungeonType.week: [3.8343, 2.0423, 0.2556, 0.025],
 };
 
 // 元素类型贴图

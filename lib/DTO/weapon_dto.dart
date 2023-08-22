@@ -57,30 +57,32 @@ class WeaponDTO extends ItemDTO {
       thisLevelUpTotalItemList = newList;
     }
     for (final element in thisLevelUpTotalItemList) {
-      thisLevelUpList.add(Container(
-        margin: const EdgeInsets.all(2),
-        child: Tooltip(
-          message: element.name,
-          child: Stack(
-            children: [
-              Positioned(
-                child: Image(
-                  image: AssetImage(backgroundMap[element.star]!),
-                  width: 33,
-                  height: 33,
+      thisLevelUpList.add(
+        Container(
+          margin: const EdgeInsets.all(2),
+          child: Tooltip(
+            message: element.name,
+            child: Stack(
+              children: [
+                Positioned(
+                  child: Image(
+                    image: AssetImage(backgroundMap[element.star]!),
+                    width: 33,
+                    height: 33,
+                  ),
                 ),
-              ),
-              Positioned(
-                child: Image(
-                  image: AssetImage(element.imageAddress),
-                  width: 33,
-                  height: 33,
+                Positioned(
+                  child: Image(
+                    image: AssetImage(element.imageAddress),
+                    width: 33,
+                    height: 33,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),);
+      );
     }
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 5, 5, 0),
