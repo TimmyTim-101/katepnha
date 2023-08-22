@@ -43,18 +43,6 @@ class _ContentsState extends State<Contents> {
   Map<ItemDTO, TextEditingController> allController = {};
 
   void initial() {
-    // 初始化合并关系map
-    for (final element in allGroup) {
-      final List<ItemDTO> thisGroupList = element.groupList;
-      for (int i = 0; i < thisGroupList.length - 1; i++) {
-        final ItemDTO littleItem = thisGroupList[i];
-        final ItemDTO bigItem = thisGroupList[i + 1];
-        if (!mergeMap.containsKey(bigItem)) {
-          mergeMap[bigItem] = littleItem;
-          reverseMergeMap[littleItem] = bigItem;
-        }
-      }
-    }
     // 初始化输入框控制器
     if (allController.length != allMaterial.length) {
       for (final element in allMaterial) {

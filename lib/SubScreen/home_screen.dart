@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/DTO/character_dto.dart';
+import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
@@ -14,6 +15,18 @@ class HomeScreen extends StatelessWidget {
     loadGlobalVarsFromFile();
     readGlobalVars();
     setGlobalVarsJsonString(tmp);
+    // 初始化合并关系map
+    for (final element in allGroup) {
+      final List<ItemDTO> thisGroupList = element.groupList;
+      for (int i = 0; i < thisGroupList.length - 1; i++) {
+        final ItemDTO littleItem = thisGroupList[i];
+        final ItemDTO bigItem = thisGroupList[i + 1];
+        if (!mergeMap.containsKey(bigItem)) {
+          mergeMap[bigItem] = littleItem;
+          reverseMergeMap[littleItem] = bigItem;
+        }
+      }
+    }
   }
 
   @override
@@ -206,6 +219,11 @@ class Contents extends StatelessWidget {
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
+                    child: customText('23-08-23：修复规划页显示信息不完整的问题。', Colors.white, 15),
                   ),
                   Container(
                     margin: const EdgeInsets.all(5),
