@@ -98,6 +98,7 @@ class _ContentsState extends State<Contents> {
   }
 
   Widget taskList() {
+    totalCondensedNum = 0;
     d20Time = 0;
     d40Time = 0;
     d60Time = 0;
@@ -377,15 +378,37 @@ class _ContentsState extends State<Contents> {
     }
     final List<Widget> recommendWidgetList = [];
     final Set<int> recommendItemList = {};
-    for (final p in planList) {
-      for (final pp in getMaterialList(p.planType, p.item, p.num)) {
+    final Map<ItemDTO, int> tmpHaveMap = {};
+    for(final i in allMaterial){
+      tmpHaveMap[i] = have(i);
+    }
+    for(final p in planList){
+      for(final pp in getMaterialList(p.planType, p.item, p.num)){
         final ItemDTO thisItem = pp.itemId;
-        final int thisItemId = thisItem.id;
-        if (!recommendItemList.contains(thisItemId)) {
-          final double thisNum = pp.num;
-          final int haveNum = simpleMergeHave(thisItem);
-          if (haveNum < thisNum) {
-            recommendItemList.add(thisItemId);
+        final int thisNum = pp.num.round();
+        if(recommendItemList.contains(thisItem.id)) continue;
+        if(tmpHaveMap[thisItem]! >= thisNum){
+          tmpHaveMap[thisItem] = tmpHaveMap[thisItem]! - thisNum;
+        }
+        else{
+          ItemDTO currentItem = thisItem;
+          int currentNum = thisNum;
+          currentNum = currentNum - tmpHaveMap[currentItem]!;
+          tmpHaveMap[currentItem] = 0;
+          while(mergeMap.containsKey(currentItem)){
+            currentItem = mergeMap[currentItem]!;
+            currentNum = currentNum * 3;
+            if(tmpHaveMap[currentItem]! >= currentNum){
+              tmpHaveMap[currentItem] = tmpHaveMap[currentItem]! - currentNum;
+              currentNum = 0;
+              break;
+            }else{
+              currentNum = currentNum - tmpHaveMap[currentItem]!;
+              tmpHaveMap[currentItem] = 0;
+            }
+          }
+          if(currentNum > 0){
+            recommendItemList.add(thisItem.id);
             recommendWidgetList.add(
               Container(
                 height: 50,
@@ -417,7 +440,7 @@ class _ContentsState extends State<Contents> {
                     Container(
                       width: 150,
                       alignment: Alignment.center,
-                      child: customText(thisItem.name, todayItemSet.contains(thisItemId) ? Colors.white : Colors.white30, 15),
+                      child: customText(thisItem.name, todayItemSet.contains(thisItem.id) ? Colors.white : Colors.white30, 15),
                     ),
                     Container(
                       width: 60,
@@ -432,7 +455,7 @@ class _ContentsState extends State<Contents> {
                     Container(
                       width: 60,
                       alignment: Alignment.center,
-                      child: customText((thisNum - simpleMergeHave(thisItem)).round().toString(), Colors.white, 12),
+                      child: customText(need(thisItem).toString(), Colors.white, 12),
                     ),
                   ],
                 ),
