@@ -1,6 +1,6 @@
 # katepnha
 
-某个动漫游戏数据库与材料规划
+原神（Genshin Impact）数据库与材料规划
 
 灵感来源：[seelie.me](https://seelie.me/)
 
