@@ -324,22 +324,24 @@ class _ContentsState extends State<Contents> {
   }
 
   Widget recommendList() {
-    final Timer resinTimer = Timer.periodic(Duration(seconds: refreshDuration), (timer) {
-      if (resinNum <= 160) {
-        final DateTime now = DateTime.now();
-        final diff = now.difference(refreshTime).inSeconds - plusDuration;
-        if (diff >= 0) {
-          final int t = (diff / plusDuration).floor();
-          refreshTime = refreshTime.add(Duration(seconds: plusDuration * t));
-          resinNum = resinNum + t;
-          if (resinNum >= 160) {
-            resinNum = 160;
+    if(resinTimer == null){
+      resinTimer = Timer.periodic(Duration(seconds: refreshDuration), (timer) {
+        if (resinNum <= 160) {
+          final DateTime now = DateTime.now();
+          final diff = now.difference(refreshTime).inSeconds - plusDuration;
+          if (diff >= 0) {
+            final int t = (diff / plusDuration).floor();
+            refreshTime = refreshTime.add(Duration(seconds: plusDuration * t));
+            resinNum = resinNum + t;
+            if (resinNum >= 160) {
+              resinNum = 160;
+            }
+            _refresh();
           }
-          _refresh();
         }
-      }
-    });
-    resinTimer.isActive;
+      });
+      resinTimer?.isActive;
+    }
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
       final int remainSeconds = (i - resinNum) * 8 * 60;
