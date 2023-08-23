@@ -6,7 +6,6 @@ import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/plan_dto.dart';
 import 'package:katepnha/DTO/weapon_list_dto.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 String tmp = '';
 
@@ -117,19 +116,6 @@ bool setGlobalVarsJsonString(String s) {
     return false;
   }
   return true;
-}
-
-Future<void> saveGlobalVars() async {
-  final prefs = await SharedPreferences.getInstance();
-  final String newJson = getGlobalVarsJsonString();
-  prefs.setString('config', newJson);
-  saveGlobalVarsToFile();
-}
-
-Future<void> readGlobalVars() async {
-  final prefs = await SharedPreferences.getInstance();
-  final result = prefs.getString('config');
-  tmp = result ?? '';
 }
 
 void saveGlobalVarsToFile() {

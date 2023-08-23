@@ -177,7 +177,7 @@ class _ContentsState extends State<Contents> {
       } else {
         databaseDisplay = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 }

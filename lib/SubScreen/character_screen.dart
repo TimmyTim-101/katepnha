@@ -382,7 +382,7 @@ class _ContentsState extends State<Contents> {
                         }
                       }
                     }
-                    saveGlobalVars();
+                    saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
@@ -441,7 +441,7 @@ class _ContentsState extends State<Contents> {
                         }
                       }
                     }
-                    saveGlobalVars();
+                    saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
@@ -463,7 +463,7 @@ class _ContentsState extends State<Contents> {
       } else {
         characterElementFilter = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -474,7 +474,7 @@ class _ContentsState extends State<Contents> {
       } else {
         characterWeaponFilter = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 }

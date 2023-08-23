@@ -208,7 +208,7 @@ class _ContentsState extends State<Contents> {
       } else {
         inventoryDisplay = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -285,7 +285,7 @@ class _ContentsState extends State<Contents> {
       } else {
         haveNumMap[item] = int.parse(num);
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -301,7 +301,7 @@ class _ContentsState extends State<Contents> {
         haveNumMap[item] = thisHave - 1;
       }
       allController[item]?.text = haveNumMap[item].toString();
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -315,7 +315,7 @@ class _ContentsState extends State<Contents> {
       }
       haveNumMap[item] = thisHave! + 1;
       allController[item]?.text = haveNumMap[item].toString();
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -339,7 +339,7 @@ class _ContentsState extends State<Contents> {
       }
       allController[item1]?.text = haveNumMap[item1].toString();
       allController[item2]?.text = haveNumMap[item2].toString();
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 

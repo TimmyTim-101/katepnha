@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
   void initial() {
     // 尝试获取配置
     loadGlobalVarsFromFile();
-    readGlobalVars();
     setGlobalVarsJsonString(tmp);
     // 初始化合并关系map
     for (final element in allGroup) {

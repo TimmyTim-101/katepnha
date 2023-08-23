@@ -488,7 +488,7 @@ class _ContentsState extends State<Contents> {
           }
         }
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -518,7 +518,7 @@ class _ContentsState extends State<Contents> {
                     if (weaponLevelMap[weapon.id]![2]! < value) {
                       weaponLevelMap[weapon.id]![2] = value;
                     }
-                    saveGlobalVars();
+                    saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
@@ -547,7 +547,7 @@ class _ContentsState extends State<Contents> {
                     if (weaponLevelMap[weapon.id]![1]! > value) {
                       weaponLevelMap[weapon.id]![1] = value;
                     }
-                    saveGlobalVars();
+                    saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
@@ -569,7 +569,7 @@ class _ContentsState extends State<Contents> {
       } else {
         weaponStarFilter = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -580,7 +580,7 @@ class _ContentsState extends State<Contents> {
       } else {
         weaponFilter = i;
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 
@@ -694,7 +694,7 @@ class _ContentsState extends State<Contents> {
           needNumMap[thisItem] = needNumMap[thisItem]! - itemPair.num.round();
         }
       }
-      saveGlobalVars();
+      saveGlobalVarsToFile();
     });
   }
 }
