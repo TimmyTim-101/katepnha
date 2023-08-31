@@ -219,6 +219,11 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
+                    child: customText('23-09-01：修复树脂计时器逻辑。', Colors.white, 15),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
                     child: customText('23-08-23：修复规划页显示信息不完整的问题，重新梳理规划材料推荐逻辑，修复若干bug。', Colors.white, 15),
                   ),
                   Container(

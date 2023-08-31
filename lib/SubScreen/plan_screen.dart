@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -324,24 +323,6 @@ class _ContentsState extends State<Contents> {
   }
 
   Widget recommendList() {
-    if(resinTimer == null){
-      resinTimer = Timer.periodic(Duration(seconds: refreshDuration), (timer) {
-        if (resinNum <= 160) {
-          final DateTime now = DateTime.now();
-          final diff = now.difference(refreshTime).inSeconds - plusDuration;
-          if (diff >= 0) {
-            final int t = (diff / plusDuration).floor();
-            refreshTime = refreshTime.add(Duration(seconds: plusDuration * t));
-            resinNum = resinNum + t;
-            if (resinNum >= 160) {
-              resinNum = 160;
-            }
-            _refresh();
-          }
-        }
-      });
-      resinTimer?.isActive;
-    }
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
       final int remainSeconds = (i - resinNum) * 8 * 60;
@@ -508,6 +489,19 @@ class _ContentsState extends State<Contents> {
                         alignment: Alignment.center,
                         child: customText('/ 160'),
                       ),
+                      Container(
+                        width: 50,
+                        margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: MaterialButton(
+                          onPressed: _refreshResin,
+                          color: Colors.green,
+                          child: const Icon(
+                            Icons.refresh_sharp,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -625,7 +619,7 @@ class _ContentsState extends State<Contents> {
     });
   }
 
-  void _refresh() {
+  void _refreshResin(){
     setState(() {
       saveGlobalVarsToFile();
     });

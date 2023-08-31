@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:katepnha/custom_style.dart';
 
@@ -281,5 +280,3 @@ final List<DropdownMenuItem> talent10DropdownItems = [
     child: customText('10', Colors.white, 15),
   ),
 ];
-
-Timer? resinTimer;

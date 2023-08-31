@@ -6,6 +6,7 @@ import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/plan_dto.dart';
 import 'package:katepnha/DTO/weapon_list_dto.dart';
+import 'package:katepnha/Utils/resin_refresh.dart';
 
 String tmp = '';
 
@@ -119,6 +120,7 @@ bool setGlobalVarsJsonString(String s) {
 }
 
 void saveGlobalVarsToFile() {
+  resinRefresh();
   const String configAddress = '.';
   final String configString = getGlobalVarsJsonString();
   try {
