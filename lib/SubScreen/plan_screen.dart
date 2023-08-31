@@ -71,8 +71,14 @@ class _ContentsState extends State<Contents> {
     // 手动触发一次更新
     saveGlobalVarsToFile();
     // 设定Timer
-    resinRefreshTimer ??= Timer.periodic(const Duration(seconds: 10), (timer) {
+    if(resinRefreshTimer != null){
+      resinRefreshTimer!.cancel();
+      print('timer销毁');
+      resinRefreshTimer = null;
+    }
+    resinRefreshTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
       setState(() {
+        print('触发timer');
         saveGlobalVarsToFile();
       });
     });
