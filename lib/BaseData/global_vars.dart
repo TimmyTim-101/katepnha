@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/plan_dto.dart';
 import 'package:katepnha/DTO/weapon_list_dto.dart';
@@ -27,6 +29,7 @@ int refreshDuration = 10; //10
 int plusDuration = 480; // 480
 int resinNum = 0;
 DateTime refreshTime = DateTime.now();
+Timer? resinRefreshTimer;
 
 // 数据库展示内容配置
 int databaseDisplay = 1;

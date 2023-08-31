@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import 'package:katepnha/DTO/weapon_dto.dart';
 import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/Utils/lack_calculate.dart';
 import 'package:katepnha/Utils/number_convert.dart';
+import 'package:katepnha/Utils/resin_refresh.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
@@ -67,6 +69,14 @@ class _ContentsState extends State<Contents> {
         }
       }
     }
+    // 手动触发一次更新
+    resinRefresh();
+    // 设定Timer
+    resinRefreshTimer ??= Timer.periodic(const Duration(seconds: 10), (timer) {
+      setState(() {
+        resinRefresh();
+      });
+    });
   }
 
   TextEditingController getController(ItemDTO item) {
@@ -619,7 +629,7 @@ class _ContentsState extends State<Contents> {
     });
   }
 
-  void _refreshResin(){
+  void _refreshResin() {
     setState(() {
       saveGlobalVarsToFile();
     });
