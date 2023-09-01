@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 // 颜色相关
 
 Color backColor() {
-  return const Color.fromRGBO(20, 10, 40, 1.0);
+  return const Color.fromRGBO(10, 20, 50, 1.0);
 }
 
 Color frontColor() {
-  return const Color.fromRGBO(50, 30, 60, 1.0);
+  return const Color.fromRGBO(40, 50, 80, 1.0);
 }
 
 Color selectedColor() {
-  return const Color.fromRGBO(80, 60, 90, 1.0);
+  return const Color.fromRGBO(60, 70, 100, 1.0);
 }
 
 Color buttonSelectedColor() {
