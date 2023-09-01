@@ -71,14 +71,12 @@ class _ContentsState extends State<Contents> {
     // 手动触发一次更新
     saveGlobalVarsToFile();
     // 设定Timer
-    if(resinRefreshTimer != null){
+    if (resinRefreshTimer != null) {
       resinRefreshTimer!.cancel();
-      print('timer销毁');
       resinRefreshTimer = null;
     }
     resinRefreshTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
       setState(() {
-        print('触发timer');
         saveGlobalVarsToFile();
       });
     });
@@ -119,6 +117,15 @@ class _ContentsState extends State<Contents> {
     dMaxTime = 0;
     todayItemSet = {};
     final Map<int, List<DungeonDTO>> costDungeonListMap = {0: [], 20: [], 40: [], 60: []};
+    final DateTime now = DateTime.now();
+    int weekday = now.weekday;
+    final int hour = now.hour;
+    if (hour < 4) {
+      weekday = weekday - 1;
+      if (weekday == 0) {
+        weekday = 7;
+      }
+    }
     for (final d in allDungeon) {
       bool isNeed = false;
       for (final ip in d.dropItemMap) {
@@ -130,19 +137,9 @@ class _ContentsState extends State<Contents> {
         }
       }
       if (isNeed) {
-        final DateTime now = DateTime.now();
-        int weekday = now.weekday;
-        final int hour = now.hour;
-        if (hour < 4) {
-          weekday = weekday - 1;
-          if (weekday == 0) {
-            weekday = 7;
-          }
-        }
-        if (d.time.contains(weekday)) {
-          final int thisCost = d.cost;
-          costDungeonListMap[thisCost]!.add(d);
-        } else {
+        final int thisCost = d.cost;
+        costDungeonListMap[thisCost]!.add(d);
+        if (!d.time.contains(weekday)) {
           for (final ip in d.dropItemMap) {
             final int thisItemId = ip.itemId.id;
             if (todayItemSet.contains(thisItemId)) {
@@ -190,7 +187,10 @@ class _ContentsState extends State<Contents> {
       cost00WidgetList.add(dungeonInfoWidget(d, dungeonPlanListMap));
     }
     for (final d in costDungeonListMap[20]!) {
-      cost20WidgetList.add(dungeonInfoWidget(d, dungeonPlanListMap));
+      final Widget tempWidget = dungeonInfoWidget(d, dungeonPlanListMap);
+      if (d.time.contains(weekday)) {
+        cost20WidgetList.add(tempWidget);
+      }
     }
     for (final d in costDungeonListMap[40]!) {
       cost40WidgetList.add(dungeonInfoWidget(d, dungeonPlanListMap));
