@@ -338,9 +338,11 @@ class _ContentsState extends State<Contents> {
   }
 
   Widget recommendList() {
+    final DateTime now = DateTime.now();
+    final String nowString = standardTimeString(now);
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
-      final int remainSeconds = (i - resinNum) * 8 * 60;
+      final int remainSeconds = (i - resinNum) * 8 * 60 - (DateTime.now().difference(refreshTime).inSeconds);
       final DateTime finishTime = refreshTime.add(Duration(seconds: remainSeconds));
       final String thisRemainHint = durationConvert(remainSeconds);
       final String thisFinishHint = timeConvert(finishTime);
@@ -516,6 +518,11 @@ class _ContentsState extends State<Contents> {
                             color: Colors.white,
                           ),
                         ),
+                      ),
+                      Container(
+                        width: 150,
+                        margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: customText('上次刷新：$nowString', Colors.white, 15),
                       ),
                     ],
                   ),

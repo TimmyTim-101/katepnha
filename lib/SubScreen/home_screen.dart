@@ -219,6 +219,11 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
+                    child: customText('23-09-02：添加规划页树脂刷新时间。', Colors.white, 15),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
                     child: customText('23-09-01：修复树脂计时器逻辑，修复规划页预计总共消耗未包含当天不能进入秘境数据。', Colors.white, 15),
                   ),
                   Container(
