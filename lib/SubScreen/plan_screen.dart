@@ -342,8 +342,9 @@ class _ContentsState extends State<Contents> {
     final String nowString = standardTimeString(now);
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
-      final int remainSeconds = (i - resinNum) * 8 * 60 - (DateTime.now().difference(refreshTime).inSeconds);
-      final DateTime finishTime = refreshTime.add(Duration(seconds: remainSeconds));
+      final DateTime now = DateTime.now();
+      final int remainSeconds = (i - resinNum) * 8 * 60 - (now.difference(refreshTime).inSeconds);
+      final DateTime finishTime = now.add(Duration(seconds: remainSeconds));
       final String thisRemainHint = durationConvert(remainSeconds);
       final String thisFinishHint = timeConvert(finishTime);
       final Widget thisHintWidget = SizedBox(
