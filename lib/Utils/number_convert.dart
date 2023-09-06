@@ -16,7 +16,7 @@ List<double> separateRate(List<double> r, int n) {
 
 String durationConvert(int seconds) {
   final int hour = (seconds / 60 / 60).floor();
-  final int minute = ((seconds - hour * 60 * 60) / 60).round();
+  final int minute = ((seconds - hour * 60 * 60) / 60).floor();
   final String hourString = hour == 0 ? '' : '$hour小时';
   final String minuteString = minute == 0 ? '' : '$minute分钟';
   String res = hourString + minuteString;
@@ -27,11 +27,15 @@ String durationConvert(int seconds) {
 }
 
 String timeConvert(DateTime dt) {
-  final int hour = dt.hour;
+  int hour = dt.hour;
   int minute = dt.minute;
   final int second = dt.second;
   if (second >= 30) {
     minute = minute + 1;
+  }
+  if(minute == 60){
+    hour = hour + 1;
+    minute = 0;
   }
   final StringBuffer hourString = StringBuffer();
   if (hour < 10) {

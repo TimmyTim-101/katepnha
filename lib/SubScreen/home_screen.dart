@@ -219,6 +219,11 @@ class Contents extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     alignment: Alignment.centerLeft,
+                    child: customText('23-09-06：修复规划页时间分钟为60的问题。', Colors.white, 15),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
                     child: customText('23-09-05：添加菲米尼相关信息，调整部分ID。', Colors.white, 15),
                   ),
                   Container(
