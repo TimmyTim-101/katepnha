@@ -44,7 +44,7 @@ class _ContentsState extends State<Contents> {
   void initial() {
     if (weaponLevelMap.length != allWeapon.length) {
       for (final element in allWeapon) {
-        if (!weaponLevelMap.containsKey(element)) {
+        if (!weaponLevelMap.containsKey(element.id)) {
           weaponLevelMap[element.id] = {1: 1, 2: 1};
         }
       }
