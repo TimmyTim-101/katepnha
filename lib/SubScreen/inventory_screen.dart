@@ -214,7 +214,7 @@ class _ContentsState extends State<Contents> {
 
   Widget infoWidget(ItemDTO item) {
     double fontSize = 18;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     return Container(
@@ -345,7 +345,7 @@ class _ContentsState extends State<Contents> {
 
   static Widget needNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int thisNeedNum = need(item);
@@ -487,7 +487,7 @@ class _ContentsState extends State<Contents> {
 
   Widget mergeNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int lackNum = mergeLack(item);

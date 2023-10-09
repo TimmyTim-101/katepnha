@@ -133,7 +133,7 @@ class _ContentsState extends State<Contents> {
         final int thisLack = mergeLack(thisItem);
         if (thisLack > 0) {
           isNeed = true;
-          todayItemSet.add(thisItem.id);
+          todayItemSet.add(thisItem.vid);
         }
       }
       if (isNeed) {
@@ -141,7 +141,7 @@ class _ContentsState extends State<Contents> {
         costDungeonListMap[thisCost]!.add(d);
         if (!d.time.contains(weekday)) {
           for (final ip in d.dropItemMap) {
-            final int thisItemId = ip.itemId.id;
+            final int thisItemId = ip.itemId.vid;
             if (todayItemSet.contains(thisItemId)) {
               todayItemSet.remove(thisItemId);
             }
@@ -168,12 +168,12 @@ class _ContentsState extends State<Contents> {
     for (final d in allDungeon) {
       for (final ip in d.dropItemMap) {
         if (materialPlanListMap.containsKey(ip.itemId)) {
-          if (!dungeonPlanListMap.containsKey(d.id)) {
-            dungeonPlanListMap[d.id] = [];
+          if (!dungeonPlanListMap.containsKey(d.vid)) {
+            dungeonPlanListMap[d.vid] = [];
           }
           for (final i in materialPlanListMap[ip.itemId]!) {
-            if (!dungeonPlanListMap[d.id]!.contains(i)) {
-              dungeonPlanListMap[d.id]!.add(i);
+            if (!dungeonPlanListMap[d.vid]!.contains(i)) {
+              dungeonPlanListMap[d.vid]!.add(i);
             }
           }
         }
@@ -387,7 +387,7 @@ class _ContentsState extends State<Contents> {
       for (final pp in getMaterialList(p.planType, p.item, p.num)) {
         final ItemDTO thisItem = pp.itemId;
         final int thisNum = pp.num.round();
-        if (recommendItemList.contains(thisItem.id)) continue;
+        if (recommendItemList.contains(thisItem.vid)) continue;
         if (tmpHaveMap[thisItem]! >= thisNum) {
           tmpHaveMap[thisItem] = tmpHaveMap[thisItem]! - thisNum;
         } else {
@@ -408,7 +408,7 @@ class _ContentsState extends State<Contents> {
             }
           }
           if (currentNum > 0) {
-            recommendItemList.add(thisItem.id);
+            recommendItemList.add(thisItem.vid);
             recommendWidgetList.add(
               Container(
                 height: 50,
@@ -440,22 +440,22 @@ class _ContentsState extends State<Contents> {
                     Container(
                       width: 150,
                       alignment: Alignment.center,
-                      child: customText(thisItem.name, todayItemSet.contains(thisItem.id) ? Colors.white : Colors.white30, 15),
+                      child: customText(thisItem.name, todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 15),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(have(thisItem).toString(), todayItemSet.contains(thisItem.id) ? Colors.white : Colors.white30, 12),
+                      child: customText(have(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(simpleMergeHave(thisItem).toString(), todayItemSet.contains(thisItem.id) ? Colors.white : Colors.white30, 12),
+                      child: customText(simpleMergeHave(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(need(thisItem).toString(), todayItemSet.contains(thisItem.id) ? Colors.white : Colors.white30, 12),
+                      child: customText(need(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
                     ),
                   ],
                 ),
@@ -679,7 +679,7 @@ class _ContentsState extends State<Contents> {
     }
     final int materialRowNum = (d.dropItemMap.length / 4).ceil();
     final List<Widget> planWidgetList = [];
-    for (final i in m[d.id]!) {
+    for (final i in m[d.vid]!) {
       planWidgetList.add(
         Container(
           margin: const EdgeInsets.fromLTRB(0, 0, 9, 9),
@@ -715,7 +715,7 @@ class _ContentsState extends State<Contents> {
     int dayNum = 0;
     if (d.dungeonType == DungeonType.exp) {
       // 经验花
-      final int needNum = max(0, need(i_104003) - have(i_104003));
+      final int needNum = max(0, need(i_3010004) - have(i_3010004));
       timeNum = (needNum / (4.5 + 6.5 / 4)).ceil();
       resinNum = timeNum * 20;
       dayNum = (resinNum / 180).ceil();
@@ -885,7 +885,7 @@ class _ContentsState extends State<Contents> {
 
   Widget infoWidget(ItemDTO item) {
     double fontSize = 18;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     return Container(
@@ -1016,7 +1016,7 @@ class _ContentsState extends State<Contents> {
 
   static Widget needNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int thisNeedNum = need(item);
@@ -1158,7 +1158,7 @@ class _ContentsState extends State<Contents> {
 
   Widget mergeNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int lackNum = mergeLack(item);

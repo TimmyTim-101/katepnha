@@ -6,7 +6,7 @@ import 'package:katepnha/DTO/item_dto.dart';
 class MaterialDTO extends ItemDTO {
   GMaterialType materialType = GMaterialType.unknown;
 
-  MaterialDTO(super.id, super.name, super.star, super.itemType, super.imageAddress, this.materialType);
+  MaterialDTO(super.vid, super.rid, super.name, super.star, super.itemType, super.imageAddress, this.materialType);
 
   @override
   Widget getItemInfoWidget() {
@@ -56,7 +56,7 @@ class MaterialDTO extends ItemDTO {
           Container(
             alignment: Alignment.center,
             margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-            child: customText('id:$id', Colors.white30, 10),
+            child: customText(rid == 0 ? '-' : 'id:$rid', Colors.white30, 10),
           ),
         ],
       ),

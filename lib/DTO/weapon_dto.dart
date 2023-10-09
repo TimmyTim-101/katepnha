@@ -8,7 +8,7 @@ class WeaponDTO extends ItemDTO {
   WeaponType weaponType = WeaponType.unknown;
   BaseWeaponLevelUpDTO? levelUpDTO;
 
-  WeaponDTO(int id, String name, int star, ItemType itemType, String imageAddress, this.weaponType, BaseWeaponLevelUpDTO weaponLevelUpDTO) : super(id, name, star, itemType, imageAddress) {
+  WeaponDTO(int vid, int rid, String name, int star, ItemType itemType, String imageAddress, this.weaponType, BaseWeaponLevelUpDTO weaponLevelUpDTO) : super(vid, rid, name, star, itemType, imageAddress) {
     levelUpDTO = weaponLevelUpDTO;
   }
 
@@ -20,9 +20,9 @@ class WeaponDTO extends ItemDTO {
     levelUpDTO?.itemMap.forEach((key, value) {
       for (final element in value) {
         final ItemDTO thisItem = element.itemId;
-        if (!thisLevelUpTotalItemIdList.contains(thisItem.id)) {
+        if (!thisLevelUpTotalItemIdList.contains(thisItem.vid)) {
           thisLevelUpTotalItemList.add(thisItem);
-          thisLevelUpTotalItemIdList.add(thisItem.id);
+          thisLevelUpTotalItemIdList.add(thisItem.vid);
         }
       }
     });
@@ -137,7 +137,7 @@ class WeaponDTO extends ItemDTO {
           Container(
             height: 10,
             alignment: Alignment.center,
-            child: customText('id:$id', Colors.white30, 10),
+            child: customText(rid == 0 ? '-' : 'id:$rid', Colors.white30, 10),
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),

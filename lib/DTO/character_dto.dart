@@ -13,7 +13,7 @@ class CharacterDTO extends ItemDTO {
   BaseTalentLevelUpDTO? talentLevelUpDTO;
   int birthday = 0;
 
-  CharacterDTO(int id, String name, int star, this.birthday, ItemType itemType, String imageAddress, this.elementType, this.weaponType, ItemDTO spec, ItemGroupDTO cry, ItemGroupDTO reg, ItemDTO? boss, BaseTalentLevelUpDTO this.talentLevelUpDTO) : super(id, name, star, itemType, imageAddress) {
+  CharacterDTO(int vid, int rid, String name, int star, this.birthday, ItemType itemType, String imageAddress, this.elementType, this.weaponType, ItemDTO spec, ItemGroupDTO cry, ItemGroupDTO reg, ItemDTO? boss, BaseTalentLevelUpDTO this.talentLevelUpDTO) : super(vid, rid, name, star, itemType, imageAddress) {
     levelUpDTO = CharacterLevelUpDTO(spec, cry, reg, boss);
   }
 
@@ -25,36 +25,36 @@ class CharacterDTO extends ItemDTO {
     levelUpDTO?.itemMap.forEach((key, value) {
       for (final element in value) {
         final ItemDTO thisItem = element.itemId;
-        if (!thisLevelUpTotalItemIdList.contains(thisItem.id)) {
+        if (!thisLevelUpTotalItemIdList.contains(thisItem.vid)) {
           thisLevelUpTotalItemList.add(thisItem);
-          thisLevelUpTotalItemIdList.add(thisItem.id);
+          thisLevelUpTotalItemIdList.add(thisItem.vid);
         }
       }
     });
     talentLevelUpDTO?.itemMap1.forEach((key, value) {
       for (final element in value) {
         final ItemDTO thisItem = element.itemId;
-        if (!thisLevelUpTotalItemIdList.contains(thisItem.id)) {
+        if (!thisLevelUpTotalItemIdList.contains(thisItem.vid)) {
           thisLevelUpTotalItemList.add(thisItem);
-          thisLevelUpTotalItemIdList.add(thisItem.id);
+          thisLevelUpTotalItemIdList.add(thisItem.vid);
         }
       }
     });
     talentLevelUpDTO?.itemMap2.forEach((key, value) {
       for (final element in value) {
         final ItemDTO thisItem = element.itemId;
-        if (!thisLevelUpTotalItemIdList.contains(thisItem.id)) {
+        if (!thisLevelUpTotalItemIdList.contains(thisItem.vid)) {
           thisLevelUpTotalItemList.add(thisItem);
-          thisLevelUpTotalItemIdList.add(thisItem.id);
+          thisLevelUpTotalItemIdList.add(thisItem.vid);
         }
       }
     });
     talentLevelUpDTO?.itemMap3.forEach((key, value) {
       for (final element in value) {
         final ItemDTO thisItem = element.itemId;
-        if (!thisLevelUpTotalItemIdList.contains(thisItem.id)) {
+        if (!thisLevelUpTotalItemIdList.contains(thisItem.vid)) {
           thisLevelUpTotalItemList.add(thisItem);
-          thisLevelUpTotalItemIdList.add(thisItem.id);
+          thisLevelUpTotalItemIdList.add(thisItem.vid);
         }
       }
     });
@@ -187,7 +187,7 @@ class CharacterDTO extends ItemDTO {
                 Container(
                   height: 10,
                   alignment: Alignment.center,
-                  child: customText('id:$id', Colors.white30, 10),
+                  child: customText(rid == 0 ? '-' : 'id:$rid', Colors.white30, 10),
                 ),
               ],
             ),

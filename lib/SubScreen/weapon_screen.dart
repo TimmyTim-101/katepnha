@@ -44,8 +44,8 @@ class _ContentsState extends State<Contents> {
   void initial() {
     if (weaponLevelMap.length != allWeapon.length) {
       for (final element in allWeapon) {
-        if (!weaponLevelMap.containsKey(element.id)) {
-          weaponLevelMap[element.id] = {1: 1, 2: 1};
+        if (!weaponLevelMap.containsKey(element.vid)) {
+          weaponLevelMap[element.vid] = {1: 1, 2: 1};
         }
       }
     }
@@ -467,15 +467,15 @@ class _ContentsState extends State<Contents> {
   void _confirmWeapon(WeaponDTO weapon) {
     setState(() {
       // 判断前后等级是否一致
-      if (weaponLevelMap[weapon.id]![1]! == weaponLevelMap[weapon.id]![2]!) {
+      if (weaponLevelMap[weapon.vid]![1]! == weaponLevelMap[weapon.vid]![2]!) {
         return;
       }
       // weapon list
       final String thisKey = UniqueKey().toString();
-      final WeaponListDTO thisWeaponListDTO = WeaponListDTO(thisKey, weapon, weaponLevelMap[weapon.id]![1]!, weaponLevelMap[weapon.id]![2]! - 1);
+      final WeaponListDTO thisWeaponListDTO = WeaponListDTO(thisKey, weapon, weaponLevelMap[weapon.vid]![1]!, weaponLevelMap[weapon.vid]![2]! - 1);
       weaponList.add(thisWeaponListDTO);
       // action
-      for (int i = weaponLevelMap[weapon.id]![1]!; i < weaponLevelMap[weapon.id]![2]!; i++) {
+      for (int i = weaponLevelMap[weapon.vid]![1]!; i < weaponLevelMap[weapon.vid]![2]!; i++) {
         final PlanDTO thisPlanDTO = PlanDTO(thisKey, weapon, PlanType.weaponLevel, i);
         planList.add(thisPlanDTO);
         for (final e in weapon.levelUpDTO!.itemMap[i]!) {
@@ -514,15 +514,15 @@ class _ContentsState extends State<Contents> {
                 items: dropdownItemList,
                 onChanged: (value) {
                   setState(() {
-                    weaponLevelMap[weapon.id]![1] = value!;
-                    if (weaponLevelMap[weapon.id]![2]! < value) {
-                      weaponLevelMap[weapon.id]![2] = value;
+                    weaponLevelMap[weapon.vid]![1] = value!;
+                    if (weaponLevelMap[weapon.vid]![2]! < value) {
+                      weaponLevelMap[weapon.vid]![2] = value;
                     }
                     saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
-                value: weaponLevelMap[weapon.id]![1],
+                value: weaponLevelMap[weapon.vid]![1],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),
@@ -543,15 +543,15 @@ class _ContentsState extends State<Contents> {
                 items: dropdownItemList,
                 onChanged: (value) {
                   setState(() {
-                    weaponLevelMap[weapon.id]![2] = value!;
-                    if (weaponLevelMap[weapon.id]![1]! > value) {
-                      weaponLevelMap[weapon.id]![1] = value;
+                    weaponLevelMap[weapon.vid]![2] = value!;
+                    if (weaponLevelMap[weapon.vid]![1]! > value) {
+                      weaponLevelMap[weapon.vid]![1] = value;
                     }
                     saveGlobalVarsToFile();
                   });
                 },
                 isExpanded: true,
-                value: weaponLevelMap[weapon.id]![2],
+                value: weaponLevelMap[weapon.vid]![2],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),

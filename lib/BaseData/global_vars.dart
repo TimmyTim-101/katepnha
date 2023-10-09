@@ -39,13 +39,13 @@ Map<String, dynamic> toJson() {
 
   final Map<String, dynamic> haveNumMap_ = <String, dynamic>{};
   haveNumMap.forEach((k, v) {
-    haveNumMap_[k.id.toString()] = v;
+    haveNumMap_[k.vid.toString()] = v;
   });
   res['haveNumMap'] = haveNumMap_;
 
   final Map<String, dynamic> needNumMap_ = <String, dynamic>{};
   needNumMap.forEach((k, v) {
-    needNumMap_[k.id.toString()] = v;
+    needNumMap_[k.vid.toString()] = v;
   });
   res['needNumMap'] = needNumMap_;
 
@@ -77,7 +77,7 @@ Map<String, dynamic> toJson() {
   for (final e in weaponList) {
     final Map<String, dynamic> m = <String, dynamic>{};
     m['id'] = e.id;
-    m['weapon'] = e.weapon.id;
+    m['weapon'] = e.weapon.vid;
     m['lowerBound'] = e.lowerBound;
     m['upperBound'] = e.upperBound;
     weaponList_.add(m);
@@ -94,7 +94,7 @@ Map<String, dynamic> toJson() {
   for (final e in planList) {
     final Map<String, dynamic> m = <String, dynamic>{};
     m['id'] = e.id;
-    m['item'] = e.item.id;
+    m['item'] = e.item.vid;
     m['planType'] = e.planType.toString();
     m['num'] = e.num;
     planList_.add(m);

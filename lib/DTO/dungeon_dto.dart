@@ -5,7 +5,7 @@ import 'package:katepnha/DTO/item_pair_dto.dart';
 import 'package:katepnha/Utils/number_convert.dart';
 
 class DungeonDTO {
-  int id = 0;
+  int vid = 0;
   String name = '';
   String subName = '';
   DungeonType dungeonType = DungeonType.unknown;
@@ -13,7 +13,7 @@ class DungeonDTO {
   List<int> time = [];
   int cost = 0;
 
-  DungeonDTO(this.id, this.name, this.subName, this.dungeonType, this.dropItemMap, this.time, this.cost);
+  DungeonDTO(this.vid, this.name, this.subName, this.dungeonType, this.dropItemMap, this.time, this.cost);
 
   Widget getItemInfoWidget() {
     String timeString = '';
@@ -105,7 +105,7 @@ class DungeonDTO {
         ),
       ),
       width: 230,
-      height: 141 + 66.0 * rowNum,
+      height: 131 + 66.0 * rowNum,
       child: Column(
         children: [
           Container(
@@ -119,12 +119,6 @@ class DungeonDTO {
             alignment: Alignment.center,
             height: 15,
             child: customText(subName, Colors.white, 15),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-            height: 10,
-            alignment: Alignment.center,
-            child: customText('id:$id', Colors.white30, 10),
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),

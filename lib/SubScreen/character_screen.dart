@@ -43,8 +43,8 @@ class _ContentsState extends State<Contents> {
   void initial() {
     if (characterLevelMap.length != allCharacter.length) {
       for (final element in allCharacter) {
-        if (!characterLevelMap.containsKey(element.id)) {
-          characterLevelMap[element.id] = {1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1};
+        if (!characterLevelMap.containsKey(element.vid)) {
+          characterLevelMap[element.vid] = {1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1};
         }
       }
     }
@@ -348,15 +348,15 @@ class _ContentsState extends State<Contents> {
                 items: dropdownItemList,
                 onChanged: (value) {
                   setState(() {
-                    characterLevelMap[element.id]![n1] = value!;
-                    if (characterLevelMap[element.id]![n2]! < value) {
-                      characterLevelMap[element.id]![n2] = value;
+                    characterLevelMap[element.vid]![n1] = value!;
+                    if (characterLevelMap[element.vid]![n2]! < value) {
+                      characterLevelMap[element.vid]![n2] = value;
                     }
                     // 删除已有相关信息
                     final List<int> deleteIndex = [];
                     for (int i = planList.length - 1; i >= 0; i--) {
                       final PlanDTO thisPlan = planList[i];
-                      if (thisPlan.item.id == element.id && thisPlan.planType == planType) {
+                      if (thisPlan.item.vid == element.vid && thisPlan.planType == planType) {
                         for (final e in itemMap[thisPlan.num]!) {
                           final ItemDTO thisItem = e.itemId;
                           final int thisNum = e.num.round();
@@ -370,7 +370,7 @@ class _ContentsState extends State<Contents> {
                     }
                     // 添加新信息
                     final String thisKey = UniqueKey().toString();
-                    for (int i = characterLevelMap[element.id]![n1]!; i < characterLevelMap[element.id]![n2]!; i++) {
+                    for (int i = characterLevelMap[element.vid]![n1]!; i < characterLevelMap[element.vid]![n2]!; i++) {
                       planList.add(PlanDTO(thisKey, element, planType, i));
                       for (final e in itemMap[i]!) {
                         final ItemDTO thisItem = e.itemId;
@@ -386,7 +386,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: characterLevelMap[element.id]![n1],
+                value: characterLevelMap[element.vid]![n1],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),
@@ -407,15 +407,15 @@ class _ContentsState extends State<Contents> {
                 items: dropdownItemList,
                 onChanged: (value) {
                   setState(() {
-                    characterLevelMap[element.id]![n2] = value!;
-                    if (characterLevelMap[element.id]![n1]! > value) {
-                      characterLevelMap[element.id]![n1] = value;
+                    characterLevelMap[element.vid]![n2] = value!;
+                    if (characterLevelMap[element.vid]![n1]! > value) {
+                      characterLevelMap[element.vid]![n1] = value;
                     }
                     // 删除已有相关信息
                     final List<int> deleteIndex = [];
                     for (int i = planList.length - 1; i >= 0; i--) {
                       final PlanDTO thisPlan = planList[i];
-                      if (thisPlan.item.id == element.id && thisPlan.planType == planType) {
+                      if (thisPlan.item.vid == element.vid && thisPlan.planType == planType) {
                         for (final e in itemMap[thisPlan.num]!) {
                           final ItemDTO thisItem = e.itemId;
                           final int thisNum = e.num.round();
@@ -429,7 +429,7 @@ class _ContentsState extends State<Contents> {
                     }
                     // 添加新信息
                     final String thisKey = UniqueKey().toString();
-                    for (int i = characterLevelMap[element.id]![n1]!; i < characterLevelMap[element.id]![n2]!; i++) {
+                    for (int i = characterLevelMap[element.vid]![n1]!; i < characterLevelMap[element.vid]![n2]!; i++) {
                       planList.add(PlanDTO(thisKey, element, planType, i));
                       for (final e in itemMap[i]!) {
                         final ItemDTO thisItem = e.itemId;
@@ -445,7 +445,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: characterLevelMap[element.id]![n2],
+                value: characterLevelMap[element.vid]![n2],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),

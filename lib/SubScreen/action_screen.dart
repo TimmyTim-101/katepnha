@@ -331,20 +331,20 @@ class _ContentsState extends State<Contents> {
       final ItemDTO thisItem = planDTO.item;
       switch (planType) {
         case PlanType.characterLevel:
-          characterLevelMap[thisItem.id]![1] = thisNum + 1;
+          characterLevelMap[thisItem.vid]![1] = thisNum + 1;
           break;
         case PlanType.characterTalent1:
-          characterLevelMap[thisItem.id]![3] = thisNum + 1;
+          characterLevelMap[thisItem.vid]![3] = thisNum + 1;
           break;
         case PlanType.characterTalent2:
-          characterLevelMap[thisItem.id]![5] = thisNum + 1;
+          characterLevelMap[thisItem.vid]![5] = thisNum + 1;
           break;
         case PlanType.characterTalent3:
-          characterLevelMap[thisItem.id]![7] = thisNum + 1;
+          characterLevelMap[thisItem.vid]![7] = thisNum + 1;
           break;
         case PlanType.weaponLevel:
           // 更改内部数据
-          weaponLevelMap[thisItem.id]![1] = thisNum + 1;
+          weaponLevelMap[thisItem.vid]![1] = thisNum + 1;
           // 更改武器右边list数据
           final String thisWeaponPlanId = planDTO.id;
           int weaponListIndex = -1;
@@ -490,7 +490,7 @@ class _ContentsState extends State<Contents> {
         allItems.addAll(element.groupList);
       }
     }
-    allItems.sort((o1, o2) => o2.id.compareTo(o1.id));
+    allItems.sort((o1, o2) => o2.vid.compareTo(o1.vid));
     final List<Widget> res = [];
     for (final element in allItems) {
       res.add(infoWidget(element));
@@ -508,7 +508,7 @@ class _ContentsState extends State<Contents> {
 
   Widget infoWidget(ItemDTO item) {
     double fontSize = 18;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     return Container(
@@ -639,7 +639,7 @@ class _ContentsState extends State<Contents> {
 
   static Widget needNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int thisNeedNum = need(item);
@@ -781,7 +781,7 @@ class _ContentsState extends State<Contents> {
 
   Widget mergeNumWidget(ItemDTO item) {
     double fontSize = 15;
-    if (item.id == 202) {
+    if (item.rid == 202) {
       fontSize = 10;
     }
     final int lackNum = mergeLack(item);

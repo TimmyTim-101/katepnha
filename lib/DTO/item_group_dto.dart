@@ -5,7 +5,7 @@ class ItemGroupDTO {
   List<ItemDTO> groupList = [];
 
   ItemGroupDTO(List<ItemDTO> list) {
-    groupBeginId = list[0].id;
+    groupBeginId = list[0].vid;
     groupList = list;
   }
 }
