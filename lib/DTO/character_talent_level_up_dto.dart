@@ -61,7 +61,7 @@ class CharacterTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(book.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap2[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -111,7 +111,7 @@ class CharacterTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(book.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap3[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -161,7 +161,7 @@ class CharacterTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(book.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
   }
 }
@@ -217,7 +217,7 @@ class TravellerTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap2[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -267,7 +267,7 @@ class TravellerTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap3[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -317,7 +317,7 @@ class TravellerTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
   }
 }
@@ -373,7 +373,7 @@ class TravellerGeoTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3.groupList[2], 16),
       ItemPairDTO(reg.groupList[2], 12),
       ItemPairDTO(boss, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap2[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -423,7 +423,7 @@ class TravellerGeoTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3_.groupList[2], 16),
       ItemPairDTO(reg_.groupList[2], 12),
       ItemPairDTO(boss_, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
     super.itemMap3[1] = [
       ItemPairDTO(i_3010001, 12500),
@@ -473,7 +473,7 @@ class TravellerGeoTalentLevelUpDTO extends BaseTalentLevelUpDTO {
       ItemPairDTO(b3_.groupList[2], 16),
       ItemPairDTO(reg_.groupList[2], 12),
       ItemPairDTO(boss_, 2),
-      ItemPairDTO(i_104319, 1),
+      ItemPairDTO(i_3060019, 1),
     ];
   }
 }
