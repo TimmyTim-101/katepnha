@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../BaseData/global_vars.dart';
 import '../custom_style.dart';
 import '../Utils/page_route.dart';
 import '../SubScreen/home_screen.dart';
@@ -23,6 +24,25 @@ Widget getNavigationSubScreen(int i, BuildContext context) {
                 Navigator.of(context).push(CustomRoute(const HomeScreen()));
               },
               child: Image.asset('images/KatepиHa_title.png'),
+            ),
+          ),
+          customDivider(),
+          Container(
+            margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              border: Border.all(color: Colors.white30),
+            ),
+            child: Column(
+              children: [
+                customText('当前账号', Colors.deepOrangeAccent, 25),
+                Container(
+                  margin: const EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  child: customText(currentAccount),
+                ),
+              ],
             ),
           ),
           customDivider(),

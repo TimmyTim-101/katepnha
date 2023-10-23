@@ -3,7 +3,14 @@ import 'dart:async';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/plan_dto.dart';
 import 'package:katepnha/DTO/weapon_list_dto.dart';
+import 'package:katepnha/Utils/json_util.dart';
 
+// 全局配置
+String currentAccount = '默认账号'; // 当前账号
+List<String> allAccounts = ['默认账号']; // 全部账号list
+Map<String, dynamic> allConfig = <String, dynamic>{currentAccount: <String, dynamic>{}}; // 存储的所有账号配置，注意单账号配置更改的同时注意此数据的更改
+
+// 单账号配置
 Map<ItemDTO, int> haveNumMap = {}; // 背包数量
 Map<ItemDTO, int> needNumMap = {}; // 所需数量
 
@@ -35,6 +42,9 @@ Timer? resinRefreshTimer;
 int databaseDisplay = 1;
 
 Map<String, dynamic> toJson() {
+  final Map<String, dynamic> rres = <String, dynamic>{};
+  final Map<String, dynamic> allConfigmap = cloneMap(allConfig);
+
   final Map<String, dynamic> res = <String, dynamic>{};
 
   final Map<String, dynamic> haveNumMap_ = <String, dynamic>{};
@@ -110,5 +120,43 @@ Map<String, dynamic> toJson() {
   res['refreshTime'] = refreshTime.toString();
 
   res['databaseDisplay'] = databaseDisplay;
-  return res;
+
+  allConfigmap[currentAccount] = res;
+
+  rres['currentAccount'] = currentAccount;
+  rres['allAccounts'] = allAccounts;
+  rres['allConfig']  = allConfigmap;
+
+  return rres;
+}
+
+void resetData(){
+  haveNumMap = {}; // 背包数量
+  needNumMap = {}; // 所需数量
+
+  // 角色展示内容配置
+  characterLevelMap = {}; // <角色ID, <1～8, 数据>>，一个角色8个field
+  characterElementFilter = 0; // 角色元素筛选
+  characterWeaponFilter = 0; // 角色武器筛选
+
+  // 武器展示内容配置
+  weaponLevelMap = {};
+  weaponList = [];
+  weaponStarFilter = 0;
+  weaponFilter = 0;
+
+  // 背包展示内容配置
+  inventoryDisplay = 1;
+
+  // 事件展示内容
+  planList = [];
+
+  // 规划展示内容配置
+  refreshDuration = 10; //10
+  plusDuration = 480; // 480
+  resinNum = 0;
+  refreshTime = DateTime.now();
+
+  // 数据库展示内容配置
+  databaseDisplay = 1;
 }

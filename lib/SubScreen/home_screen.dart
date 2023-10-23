@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:katepnha/BaseData/constants.dart';
+import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/DTO/character_dto.dart';
 import 'package:katepnha/DTO/item_dto.dart';
@@ -13,7 +14,8 @@ class HomeScreen extends StatelessWidget {
   void initial() {
     // 尝试获取配置
     loadGlobalVarsFromFile();
-    setGlobalVarsJsonString(tmp);
+    saveGlobalVarsToFile();
+    loadGlobalVarsFromFile();
     // 初始化合并关系map
     for (final element in allGroup) {
       final List<ItemDTO> thisGroupList = element.groupList;
@@ -39,17 +41,31 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class Navigation extends StatelessWidget {
+class Navigation extends StatefulWidget {
   const Navigation({super.key});
 
+  @override
+  State<StatefulWidget> createState() => _NavigationState();
+}
+
+// todo:账号改变不能实时更新
+class _NavigationState extends State<Navigation>{
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(1, context);
   }
+
 }
 
-class Contents extends StatelessWidget {
+class Contents extends StatefulWidget {
   const Contents({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _ContentsState();
+}
+
+class _ContentsState extends State<Contents> {
+  String nameTextFieldTmp = '';
 
   void initial() {
     if (birthdayCharacterMap.length != allCharacter.length) {
@@ -67,6 +83,7 @@ class Contents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initial();
+    // 获取生日信息
     final List<Widget> recentBirthdayCharacterList = [];
     final DateTime now = DateTime.now();
     final int nowMonth = now.month;
@@ -143,55 +160,162 @@ class Contents extends StatelessWidget {
         }
       }
     }
+    // 获取账号信息
+    final List<Widget> allAccountsWidgetList = [];
+    for (final String acc in allAccounts) {
+      final Widget thisContainer = Material(
+        color: frontColor(),
+        borderRadius: BorderRadius.circular(5),
+        child: Container(
+          width: 646,
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            children: [
+              Container(
+                width: 150,
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                alignment: Alignment.centerRight,
+                child: customText(acc, Colors.white, 15),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: MaterialButton(
+                  onPressed: () => _changeAccount(acc),
+                  color: unLackColor(),
+                  child: customText('切换', Colors.white, 15),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: MaterialButton(
+                  onPressed: () => _deleteAccount(acc),
+                  color: unLackColor(),
+                  child: customText('删除', Colors.white, 15),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: MaterialButton(
+                  onPressed: () => _renameAccount(acc),
+                  color: unLackColor(),
+                  child: customText('重命名', Colors.white, 15),
+                ),
+              ),
+              SizedBox(
+                width: 200,
+                child: TextField(
+                  textAlign: TextAlign.left,
+                  onChanged: (value) => _update(value),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                  decoration: const InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+      allAccountsWidgetList.add(thisContainer);
+    }
     return SizedBox(
       width: MediaQuery.of(context).size.width - 200,
       child: Material(
         color: backColor(),
         child: ListView(
           children: <Widget>[
-            SizedBox(height: 300, child: Image.asset('images/KatepиHa_logo.png')),
-            Container(
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(10),
-              alignment: Alignment.center,
-              child: Material(
-                borderRadius: BorderRadius.circular(10),
-                color: frontColor(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(margin: const EdgeInsets.all(8), child: customText('向着星辰与深渊～我不是凯瑟琳，我是KatepиHa，一个原神养成小助手。')),
-                    Container(margin: const EdgeInsets.all(8), child: customText('不知道该干点啥？有一堆角色武器要养？材料我该合成多少打多少？要多久才能攒够材料？KatepиHa帮您忙！')),
-                    Container(margin: const EdgeInsets.all(8), child: customText('在这里，把你的要养的角色武器还有背包里的东西都告诉凯瑟琳，KatepиHa就会自动帮你计算出所缺材料数量，还可以给出养成顺序。')),
-                    Container(margin: const EdgeInsets.all(8), child: customText('有了KatepиHa，你可有事干了！')),
-                  ],
-                ),
-              ),
-            ),
+            customDivider(),
             Container(
               margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-              height: 40,
               child: Row(
                 children: [
+                  SizedBox(height: 200, child: Image.asset('images/KatepиHa_logo.png')),
                   Container(
-                    margin: const EdgeInsets.all(5),
-                    color: unLackColor(),
-                    width: 150,
-                    child: MaterialButton(
-                      onPressed: _downloadConfig,
-                      child: customText('下载数据'),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    color: unLackColor(),
-                    width: 150,
-                    child: MaterialButton(
-                      onPressed: _uploadConfig,
-                      child: customText('上传数据'),
+                    margin: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(10),
+                      color: frontColor(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(margin: const EdgeInsets.all(8), child: customText('向着星辰与深渊～我不是凯瑟琳，我是KatepиHa，一个原神养成小助手。')),
+                          Container(margin: const EdgeInsets.all(8), child: customText('不知道该干点啥？有一堆角色武器要养？材料我该合成多少打多少？要多久才能攒够材料？KatepиHa帮您忙！')),
+                          Container(margin: const EdgeInsets.all(8), child: customText('在这里，把你的要养的角色武器还有背包里的东西都告诉凯瑟琳，KatepиHa就会自动帮你计算出所缺材料数量，还可以给出养成顺序。')),
+                          Container(margin: const EdgeInsets.all(8), child: customText('有了KatepиHa，你可有事干了！')),
+                        ],
+                      ),
                     ),
                   ),
                 ],
+              ),
+            ),
+            customDivider(),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: TextField(
+                      textAlign: TextAlign.left,
+                      onChanged: (value) => _update(value),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                      decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  FloatingActionButton.small(
+                    onPressed: _addAccount,
+                    backgroundColor: unLackColor(),
+                    foregroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.add,
+                      size: 20,
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: customText('当前账号：', Colors.deepOrangeAccent),
+                  ),
+                  Container(
+                    child: customText(currentAccount),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: 400,
+              alignment: Alignment.centerLeft,
+              margin: const EdgeInsets.fromLTRB(30, 8, 0, 0),
+              child: Column(
+                children: allAccountsWidgetList,
               ),
             ),
             customDivider(),
@@ -215,6 +339,11 @@ class Contents extends StatelessWidget {
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    alignment: Alignment.centerLeft,
+                    child: customText('23-10-24：新增多账号功能。', Colors.white, 15),
                   ),
                   Container(
                     margin: const EdgeInsets.all(5),
@@ -291,11 +420,66 @@ class Contents extends StatelessWidget {
     );
   }
 
-  void _downloadConfig() {
-    saveGlobalVarsToFile();
+  void _addAccount() {
+    setState(() {
+      if (!allAccounts.contains(nameTextFieldTmp)) {
+        saveGlobalVarsToFile();
+        allAccounts.add(nameTextFieldTmp);
+        currentAccount = nameTextFieldTmp;
+        allConfig[nameTextFieldTmp] = {};
+        resetData();
+        saveGlobalVarsToFile();
+        loadGlobalVarsFromFile();
+      }
+    });
   }
 
-  void _uploadConfig() {
-    loadGlobalVarsFromFile();
+  void _changeAccount(String acc) {
+    setState(() {
+      saveGlobalVarsToFile();
+      currentAccount = acc;
+      final Map<String, dynamic> m = allConfig[acc];
+      readMapConfigToInnerDataStructure(m);
+      saveGlobalVarsToFile();
+    });
+  }
+
+  void _deleteAccount(String acc) {
+    setState(() {
+      saveGlobalVarsToFile();
+      if (allAccounts.length >= 2) {
+        allAccounts.remove(acc);
+        currentAccount = allAccounts[0];
+        allConfig.remove(acc);
+        final m = allConfig[currentAccount];
+        readMapConfigToInnerDataStructure(m);
+      }
+      saveGlobalVarsToFile();
+    });
+  }
+
+  void _renameAccount(String acc) {
+    setState(() {
+      saveGlobalVarsToFile();
+      if (!allAccounts.contains(nameTextFieldTmp)) {
+        int index = 0;
+        for (int i = 0; i < allAccounts.length; i++) {
+          if (allAccounts[i] == acc) {
+            index = i;
+          }
+        }
+        allAccounts[index] = nameTextFieldTmp;
+        currentAccount = nameTextFieldTmp;
+        allConfig[nameTextFieldTmp] = allConfig[acc];
+        allConfig.remove(acc);
+        saveGlobalVarsToFile();
+      }
+    });
+  }
+
+  void _update(String s) {
+    setState(() {
+      nameTextFieldTmp = s;
+    });
   }
 }
