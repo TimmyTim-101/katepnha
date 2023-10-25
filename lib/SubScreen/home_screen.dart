@@ -49,12 +49,11 @@ class Navigation extends StatefulWidget {
 }
 
 // todo:账号改变不能实时更新
-class _NavigationState extends State<Navigation>{
+class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return getNavigationSubScreen(1, context);
   }
-
 }
 
 class Contents extends StatefulWidget {
@@ -340,76 +339,21 @@ class _ContentsState extends State<Contents> {
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-10-24：新增多账号功能。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-10-21：适配4.1数据，修复bug若干。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-10-09：修复部分信息显示错误问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-09-13：修复武器页不生效的问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-09-06：修复规划页时间分钟为60的问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-09-05：添加菲米尼相关信息，调整部分ID。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-09-02：添加规划页树脂刷新时间。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-09-01：修复树脂计时器逻辑，修复规划页预计总共消耗未包含当天不能进入秘境数据。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-23：修复规划页显示信息不完整的问题，重新梳理规划材料推荐逻辑，修复若干bug。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-21：修复规划页面树脂显示延迟等问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-20：修复角色多莉星级显示错误的问题，修复版本更新后配置文件不通用的问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-19：新增数据持久化，修复材料展示顺序问题。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-18：适配4.0数据，修复若干bug。', Colors.white, 15),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    alignment: Alignment.centerLeft,
-                    child: customText('23-08-14：V1.0.0', Colors.white, 15),
-                  ),
+                  updateContainer('23-10-24：修复数据可能被清除的问题。'),
+                  updateContainer('23-10-24：新增多账号功能。'),
+                  updateContainer('23-10-21：适配4.1数据，修复bug若干。'),
+                  updateContainer('23-10-09：修复部分信息显示错误问题。'),
+                  updateContainer('23-09-13：修复武器页不生效的问题。'),
+                  updateContainer('23-09-06：修复规划页时间分钟为60的问题。'),
+                  updateContainer('23-09-05：添加菲米尼相关信息，调整部分ID。'),
+                  updateContainer('23-09-02：添加规划页树脂刷新时间。'),
+                  updateContainer('23-09-01：修复树脂计时器逻辑，修复规划页预计总共消耗未包含当天不能进入秘境数据。'),
+                  updateContainer('23-08-23：修复规划页显示信息不完整的问题，重新梳理规划材料推荐逻辑，修复若干bug。'),
+                  updateContainer('23-08-21：修复规划页面树脂显示延迟等问题。'),
+                  updateContainer('23-08-20：修复角色多莉星级显示错误的问题，修复版本更新后配置文件不通用的问题。'),
+                  updateContainer('23-08-19：新增数据持久化，修复材料展示顺序问题。'),
+                  updateContainer('23-08-18：适配4.0数据，修复若干bug。'),
+                  updateContainer('23-08-14：V1.0.0'),
                 ],
               ),
             ),
@@ -417,6 +361,14 @@ class _ContentsState extends State<Contents> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget updateContainer(String info) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(0, 5, 5, 5),
+      alignment: Alignment.centerLeft,
+      child: customText(info, Colors.white, 15),
     );
   }
 

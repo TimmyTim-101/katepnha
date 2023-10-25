@@ -39,7 +39,7 @@ void saveGlobalVarsToFile() {
   final String configString = getGlobalVarsJsonString();
   try {
     final File f = File('$configAddress/KatepиHa_config.json');
-    if(f.existsSync()){
+    if (f.existsSync()) {
       f.deleteSync();
     }
     f.createSync();
@@ -57,9 +57,8 @@ void loadGlobalVarsFromFile() {
   const String configAddress = '.';
   try {
     final File f = File('$configAddress/KatepиHa_config.json');
-    f.readAsString().then((String s) {
-      setGlobalVarsJsonString(s);
-    });
+    final configString = f.readAsStringSync();
+    setGlobalVarsJsonString(configString);
   } catch (e) {
     return;
   }
