@@ -43,10 +43,7 @@ void saveGlobalVarsToFile() {
       f.deleteSync();
     }
     f.createSync();
-    final IOSink sink = f.openWrite();
-    sink.write(configString);
-    sink.flush();
-    sink.close();
+    f.writeAsStringSync(configString);
   } catch (e) {
     return;
   }

@@ -339,6 +339,7 @@ class _ContentsState extends State<Contents> {
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
                   ),
+                  updateContainer('23-10-29：修复特殊情况下账号无法切换的问题。'),
                   updateContainer('23-10-24：修复数据可能被清除的问题。'),
                   updateContainer('23-10-24：新增多账号功能。'),
                   updateContainer('23-10-21：适配4.1数据，修复bug若干。'),
