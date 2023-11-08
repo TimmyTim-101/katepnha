@@ -96,6 +96,8 @@ final CharacterDTO i_1010069 = CharacterDTO(1010069, 1084, '林尼', 5, 202, Ite
 final CharacterDTO i_1010070 = CharacterDTO(1010070, 1085, '菲米尼', 4, 924, ItemType.character, 'images/characters/1085.png', ElementType.cryo, WeaponType.claymore, i_3080036, g_3050025, g_3020079, i_3040025, CharacterTalentLevelUpDTO(g_3060041, g_3020079, i_3030022));
 final CharacterDTO i_1010071 = CharacterDTO(1010071, 1086, '莱欧斯利', 5, 1123, ItemType.character, 'images/characters/1086.png', ElementType.cryo, WeaponType.catalyst, i_3080040, g_3050025, g_3020082, i_3040027, CharacterTalentLevelUpDTO(g_3060044, g_3020082, i_3030023));
 final CharacterDTO i_1010072 = CharacterDTO(1010072, 1087, '那维莱特', 5, 1218, ItemType.character, 'images/characters/1087.png', ElementType.hydro, WeaponType.catalyst, i_3080039, g_3050009, g_3020079, i_3040028, CharacterTalentLevelUpDTO(g_3060038, g_3020079, i_3030024));
+final CharacterDTO i_1010073 = CharacterDTO(1010073, 1088, '芙宁娜', 5, 1013, ItemType.character, 'images/characters/1088.png', ElementType.hydro, WeaponType.sword, i_3080041, g_3050009, g_3020037, i_3040029, CharacterTalentLevelUpDTO(g_3060041, g_3020037, i_3030027)); // todo：ID
+final CharacterDTO i_1010074 = CharacterDTO(1010074, 1089, '夏洛蒂', 4, 410, ItemType.character, 'images/characters/1089.png', ElementType.cryo, WeaponType.catalyst, i_3080035, g_3050025, g_3020082, i_3040027, CharacterTalentLevelUpDTO(g_3060041, g_3020082, i_3030025)); // todo：ID
 
 // 武器
 final WeaponDTO i_2010101 = WeaponDTO(2010101, 11101, '无锋剑', 1, ItemType.weapon, 'images/weapons/11101.png', WeaponType.sword, WeaponStar1LevelUpDTO(g_3020010, g_3020013, g_3070001));
@@ -128,6 +130,7 @@ final WeaponDTO i_2010419 = WeaponDTO(2010419, 11424, '狼牙', 4, ItemType.weap
 final WeaponDTO i_2010420 = WeaponDTO(2010420, 11425, '海渊终曲', 4, ItemType.weapon, 'images/weapons/11425.png', WeaponType.sword, WeaponStar4LevelUpDTO(g_3020043, g_3020085, g_3070053));
 final WeaponDTO i_2010421 = WeaponDTO(2010421, 11426, '灰河渡手', 4, ItemType.weapon, 'images/weapons/11426.png', WeaponType.sword, WeaponStar4LevelUpDTO(g_3020079, g_3020085, g_3070049));
 final WeaponDTO i_2010422 = WeaponDTO(2010422, 11427, '船坞长剑', 4, ItemType.weapon, 'images/weapons/11427.png', WeaponType.sword, WeaponStar4LevelUpDTO(g_3020079, g_3020091, g_3070053));
+final WeaponDTO i_2010423 = WeaponDTO(2010423, 11428, '水仙十字之剑', 4, ItemType.weapon, 'images/weapons/11428.png', WeaponType.sword, WeaponStar4LevelUpDTO(g_3020079, g_3020091, g_3070049));
 final WeaponDTO i_2010501 = WeaponDTO(2010501, 11501, '风鹰剑', 5, ItemType.weapon, 'images/weapons/11501.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020010, g_3020013, g_3070001));
 final WeaponDTO i_2010502 = WeaponDTO(2010502, 11502, '天空之刃', 5, ItemType.weapon, 'images/weapons/11502.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020001, g_3020019, g_3070005));
 final WeaponDTO i_2010503 = WeaponDTO(2010503, 11503, '苍古自由之誓', 5, ItemType.weapon, 'images/weapons/11503.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020007, g_3020022, g_3070009));
@@ -137,6 +140,7 @@ final WeaponDTO i_2010506 = WeaponDTO(2010506, 11509, '雾切之回光', 5, Item
 final WeaponDTO i_2010507 = WeaponDTO(2010507, 11510, '波乱月白经津', 5, ItemType.weapon, 'images/weapons/11510.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020043, g_3020016, g_3070029));
 final WeaponDTO i_2010508 = WeaponDTO(2010508, 11511, '圣显之钥', 5, ItemType.weapon, 'images/weapons/11511.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020064, g_3020070, g_3070037));
 final WeaponDTO i_2010509 = WeaponDTO(2010509, 11512, '裁叶萃光', 5, ItemType.weapon, 'images/weapons/11512.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020064, g_3020073, g_3070037));
+final WeaponDTO i_2010510 = WeaponDTO(2010510, 11513, '静水流涌之辉', 5, ItemType.weapon, 'images/weapons/11513.png', WeaponType.sword, WeaponStar5LevelUpDTO(g_3020079, g_3020085, g_3070053));
 final WeaponDTO i_2020101 = WeaponDTO(2020101, 12101, '训练大剑', 1, ItemType.weapon, 'images/weapons/12101.png', WeaponType.claymore, WeaponStar1LevelUpDTO(g_3020001, g_3020019, g_3070005));
 final WeaponDTO i_2020201 = WeaponDTO(2020201, 12201, '佣兵重剑', 2, ItemType.weapon, 'images/weapons/12201.png', WeaponType.claymore, WeaponStar2LevelUpDTO(g_3020001, g_3020019, g_3070005));
 final WeaponDTO i_2020301 = WeaponDTO(2020301, 12301, '铁影阔剑', 3, ItemType.weapon, 'images/weapons/12301.png', WeaponType.claymore, WeaponStar3LevelUpDTO(g_3020037, g_3020013, g_3070001));
@@ -436,6 +440,9 @@ final MaterialDTO i_3030021 = MaterialDTO(3030021, 113043, '空行的虚铃', 5,
 final MaterialDTO i_3030022 = MaterialDTO(3030022, 113046, '生长天地之蕨草', 5, ItemType.material, 'images/materials/113046.png', GMaterialType.clu);
 final MaterialDTO i_3030023 = MaterialDTO(3030023, 113047, '原初绿洲之初绽', 5, ItemType.material, 'images/materials/113047.png', GMaterialType.clu);
 final MaterialDTO i_3030024 = MaterialDTO(3030024, 113048, '亘古树海之一瞬', 5, ItemType.material, 'images/materials/113048.png', GMaterialType.clu);
+final MaterialDTO i_3030025 = MaterialDTO(3030025, 113054, '无光丝线', 5, ItemType.material, 'images/materials/113054.png', GMaterialType.clu);
+final MaterialDTO i_3030026 = MaterialDTO(3030026, 113055, '无光涡眼', 5, ItemType.material, 'images/materials/113055.png', GMaterialType.clu);
+final MaterialDTO i_3030027 = MaterialDTO(3030027, 113056, '无光质块', 5, ItemType.material, 'images/materials/113056.png', GMaterialType.clu);
 
 // 角色培养素材-BOSS
 final MaterialDTO i_3040001 = MaterialDTO(3040001, 113001, '飓风之种', 4, ItemType.material, 'images/materials/113001.png', GMaterialType.cb);
@@ -466,6 +473,7 @@ final MaterialDTO i_3040025 = MaterialDTO(3040025, 113050, '奇械发条备件·
 final MaterialDTO i_3040026 = MaterialDTO(3040026, 113051, '帝皇的决断', 4, ItemType.material, 'images/materials/113051.png', GMaterialType.cb);
 final MaterialDTO i_3040027 = MaterialDTO(3040027, 113052, '「图比昂装置」', 4, ItemType.material, 'images/materials/113052.png', GMaterialType.cb);
 final MaterialDTO i_3040028 = MaterialDTO(3040028, 113053, '原海麟角', 4, ItemType.material, 'images/materials/113053.png', GMaterialType.cb);
+final MaterialDTO i_3040029 = MaterialDTO(3040029, 113057, '未能达成超越之水', 4, ItemType.material, 'images/materials/113057.png', GMaterialType.cb);
 
 // 角色突破素材
 final MaterialDTO i_3050001 = MaterialDTO(3050001, 104101, '璀璨原钻碎屑', 2, ItemType.material, 'images/materials/104101.png', GMaterialType.cc);
@@ -690,6 +698,8 @@ final MaterialDTO i_3080037 = MaterialDTO(3080037, 101235, '柔灯铃', 1, ItemT
 final MaterialDTO i_3080038 = MaterialDTO(3080038, 101236, '虹彩蔷薇', 1, ItemType.material, 'images/materials/101236.png', GMaterialType.spec);
 final MaterialDTO i_3080039 = MaterialDTO(3080039, 101237, '幽光星星', 1, ItemType.material, 'images/materials/101237.png', GMaterialType.spec);
 final MaterialDTO i_3080040 = MaterialDTO(3080040, 101239, '子探测单元', 1, ItemType.material, 'images/materials/101239.png', GMaterialType.spec);
+final MaterialDTO i_3080041 = MaterialDTO(3080041, 101238, '湖光铃兰', 1, ItemType.material, 'images/materials/101238.png', GMaterialType.spec);
+final MaterialDTO i_3080042 = MaterialDTO(3080042, 101240, '初露之源', 1, ItemType.material, 'images/materials/101240.png', GMaterialType.spec);
 
 // 秘境
 // 特产采集
@@ -697,7 +707,7 @@ final DungeonDTO i_4010001 = DungeonDTO(4010001, '蒙德区域特产', '', Dunge
 final DungeonDTO i_4010002 = DungeonDTO(4010002, '璃月区域特产', '', DungeonType.pick, [ItemPairDTO(i_3080009, 1),ItemPairDTO(i_3080010, 1),ItemPairDTO(i_3080011, 1),ItemPairDTO(i_3080012, 1),ItemPairDTO(i_3080013, 1),ItemPairDTO(i_3080014, 1),ItemPairDTO(i_3080015, 1),ItemPairDTO(i_3080016, 1),], dungeonWeekMap[1]!, 0);
 final DungeonDTO i_4010003 = DungeonDTO(4010003, '稻妻区域特产', '', DungeonType.pick, [ItemPairDTO(i_3080017, 1),ItemPairDTO(i_3080018, 1),ItemPairDTO(i_3080019, 1),ItemPairDTO(i_3080020, 1),ItemPairDTO(i_3080021, 1),ItemPairDTO(i_3080022, 1),ItemPairDTO(i_3080023, 1),ItemPairDTO(i_3080024, 1),ItemPairDTO(i_3080025, 1),], dungeonWeekMap[1]!, 0);
 final DungeonDTO i_4010004 = DungeonDTO(4010004, '须弥区域特产', '', DungeonType.pick, [ItemPairDTO(i_3080026, 1),ItemPairDTO(i_3080027, 1),ItemPairDTO(i_3080028, 1),ItemPairDTO(i_3080029, 1),ItemPairDTO(i_3080030, 1),ItemPairDTO(i_3080031, 1),ItemPairDTO(i_3080032, 1),ItemPairDTO(i_3080033, 1),ItemPairDTO(i_3080034, 1),], dungeonWeekMap[1]!, 0);
-final DungeonDTO i_4010005 = DungeonDTO(4010005, '枫丹区域特产', '', DungeonType.pick, [ItemPairDTO(i_3080035, 1),ItemPairDTO(i_3080036, 1),ItemPairDTO(i_3080037, 1),ItemPairDTO(i_3080038, 1),ItemPairDTO(i_3080039, 1),ItemPairDTO(i_3080040, 1),], dungeonWeekMap[1]!, 0);
+final DungeonDTO i_4010005 = DungeonDTO(4010005, '枫丹区域特产', '', DungeonType.pick, [ItemPairDTO(i_3080035, 1),ItemPairDTO(i_3080036, 1),ItemPairDTO(i_3080037, 1),ItemPairDTO(i_3080038, 1),ItemPairDTO(i_3080039, 1),ItemPairDTO(i_3080040, 1),ItemPairDTO(i_3080041, 1),ItemPairDTO(i_3080042, 1),], dungeonWeekMap[1]!, 0);
 // 怪物掉落
 final DungeonDTO i_4020001 = DungeonDTO(4020001, '史莱姆', '', DungeonType.monster, ItemPairDTO.pairList(g_3020001, dungeonOddMap[DungeonType.monster]!), dungeonWeekMap[1]!, 0);
 final DungeonDTO i_4020002 = DungeonDTO(4020002, '丘丘人', '', DungeonType.monster, ItemPairDTO.pairList(g_3020004, dungeonOddMap[DungeonType.monster]!), dungeonWeekMap[1]!, 0);
@@ -794,6 +804,7 @@ final DungeonDTO i_4060025 = DungeonDTO(4060025, '「冰风组曲」', '', Dunge
 final DungeonDTO i_4060026 = DungeonDTO(4060026, '铁甲熔火帝皇', '', DungeonType.boss, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3040026, 2.5556)],ItemPairDTO.pairList(g_3050005, dungeonOddMap[DungeonType.boss]!)]), dungeonWeekMap[1]!, 40);
 final DungeonDTO i_4060027 = DungeonDTO(4060027, '实验性场力发生装置', '', DungeonType.boss, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3040027, 2.5556)],ItemPairDTO.pairList(g_3050029, dungeonOddMap[DungeonType.boss]!)]), dungeonWeekMap[1]!, 40);
 final DungeonDTO i_4060028 = DungeonDTO(4060028, '千年珍珠骏麟', '', DungeonType.boss, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3040028, 2.5556)],ItemPairDTO.pairList(g_3050017, dungeonOddMap[DungeonType.boss]!)]), dungeonWeekMap[1]!, 40);
+final DungeonDTO i_4060029 = DungeonDTO(4060029, '水形幻人', '', DungeonType.boss, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3040029, 2.5556)],ItemPairDTO.pairList(g_3050009, dungeonOddMap[DungeonType.boss]!)]), dungeonWeekMap[1]!, 40);
 // 周本
 final DungeonDTO i_4070001 = DungeonDTO(4070001, '深入风龙废墟', '暴风般狂啸之龙 Ⅵ', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030001, 0.8),ItemPairDTO(i_3030002, 0.8),ItemPairDTO(i_3030003, 0.8),],ItemPairDTO.pairList(g_3050009, separateRate(dungeonOddMap[DungeonType.week]!,3)),ItemPairDTO.pairList(g_3050017, separateRate(dungeonOddMap[DungeonType.week]!,3)),ItemPairDTO.pairList(g_3050021, separateRate(dungeonOddMap[DungeonType.week]!,3)),]), dungeonWeekMap[1]!, 60);
 final DungeonDTO i_4070002 = DungeonDTO(4070002, '奔狼岭', '北风的王狼，奔狼的领主', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030004, 0.8),ItemPairDTO(i_3030005, 0.8),ItemPairDTO(i_3030006, 0.8),],ItemPairDTO.pairList(g_3050005, separateRate(dungeonOddMap[DungeonType.week]!,3)),ItemPairDTO.pairList(g_3050025, separateRate(dungeonOddMap[DungeonType.week]!,3)),ItemPairDTO.pairList(g_3050029, separateRate(dungeonOddMap[DungeonType.week]!,3)),]), dungeonWeekMap[1]!, 60);
@@ -803,3 +814,4 @@ final DungeonDTO i_4070005 = DungeonDTO(4070005, '鸣神岛·天守', '红莲的
 final DungeonDTO i_4070006 = DungeonDTO(4070006, '梦想乐土之殁', '永恒的守护者 IV', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030016, 0.8),ItemPairDTO(i_3030017, 0.8),ItemPairDTO(i_3030018, 0.8),],ItemPairDTO.pairList(g_3050017, dungeonOddMap[DungeonType.week]!),]), dungeonWeekMap[1]!, 60);
 final DungeonDTO i_4070007 = DungeonDTO(4070007, '净琉璃工坊', '七叶中尊琉璃坛 IV', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030019, 0.8),ItemPairDTO(i_3030020, 0.8),ItemPairDTO(i_3030021, 0.8),],ItemPairDTO.pairList(g_3050009, dungeonOddMap[DungeonType.week]!),ItemPairDTO.pairList(g_3050017, separateRate(dungeonOddMap[DungeonType.week]!,3)),ItemPairDTO.pairList(g_3050021, separateRate(dungeonOddMap[DungeonType.week]!,3)),]), dungeonWeekMap[1]!, 60);
 final DungeonDTO i_4070008 = DungeonDTO(4070008, '肇始之乡', '「它们」也曾完美无瑕 IV', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030022, 0.8),ItemPairDTO(i_3030023, 0.8),ItemPairDTO(i_3030024, 0.8),],ItemPairDTO.pairList(g_3050013, dungeonOddMap[DungeonType.week]!),]), dungeonWeekMap[1]!, 60);
+final DungeonDTO i_4070009 = DungeonDTO(4070009, '异界余影', '星间的巨兽 IV', DungeonType.week, ItemPairDTO.pairListExtra([[ItemPairDTO(i_3030025, 0.8),ItemPairDTO(i_3030026, 0.8),ItemPairDTO(i_3030027, 0.8),],ItemPairDTO.pairList(g_3050009, dungeonOddMap[DungeonType.week]!),]), dungeonWeekMap[1]!, 60);
