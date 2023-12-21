@@ -128,11 +128,11 @@ class WeaponDTO extends ItemDTO {
             image: AssetImage(starMap[star]!),
             height: 20,
           ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-            height: 25,
-            alignment: Alignment.center,
-            child: customText(name),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: customText(name),
+            ),
           ),
           Container(
             height: 10,

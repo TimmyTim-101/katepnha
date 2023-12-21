@@ -419,7 +419,10 @@ class _ContentsState extends State<Contents> {
                   width: 160,
                   margin: const EdgeInsets.all(2),
                   alignment: Alignment.center,
-                  child: customText(thisWeapon.name),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: customText(thisWeapon.name),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.all(5),
