@@ -386,8 +386,8 @@ class _ContentsState extends State<Contents> {
                 color: Colors.white,
               ),
             ),
-            height: 265,
-            width: 160,
+            height: 270,
+            width: 161,
             child: Column(
               children: [
                 Stack(
@@ -432,8 +432,8 @@ class _ContentsState extends State<Contents> {
                       color: Colors.white30,
                     ),
                   ),
-                  width: 160,
-                  height: 30,
+                  width: 161,
+                  height: 33,
                   child: Column(
                     children: [
                       infoWidgetProducer(thisWeapon, thisWeapon.star >= 3 ? level90DropdownItems : level70DropdownItems, PlanType.weaponLevel, thisWeapon.levelUpDTO!.itemMap),

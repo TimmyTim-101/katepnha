@@ -100,7 +100,7 @@ class _ContentsState extends State<Contents> {
           c as CharacterDTO;
           recentBirthdayCharacterList.add(
             Container(
-              height: 153,
+              height: 159,
               width: 100,
               margin: const EdgeInsets.fromLTRB(0, 0, 5, 5),
               decoration: BoxDecoration(
@@ -339,6 +339,7 @@ class _ContentsState extends State<Contents> {
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
                   ),
+                  updateContainer('24-01-31：适配4.4数据，调整部分布局。'),
                   updateContainer('23-12-21：适配4.3数据，修复部分数据展示错误。'),
                   updateContainer('23-11-08：适配4.2数据。'),
                   updateContainer('23-10-29：修复特殊情况下账号无法切换的问题。'),

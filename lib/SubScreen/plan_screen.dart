@@ -365,7 +365,7 @@ class _ContentsState extends State<Contents> {
             Container(
               width: 75,
               alignment: Alignment.center,
-              child: customText('树脂数达到', Colors.white, 15),
+              child: customText('树脂数达到', Colors.white, 14),
             ),
             Container(
               width: 50,

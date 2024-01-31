@@ -240,7 +240,7 @@ class _ContentsState extends State<Contents> {
                 color: Colors.white,
               ),
             ),
-            height: 200,
+            height: 206,
             width: 400,
             child: Row(
               children: [
@@ -330,10 +330,10 @@ class _ContentsState extends State<Contents> {
             child: Column(
               children: [
                 Container(
-                  child: customText(s1, Colors.white, 15),
+                  child: customText(s1, Colors.white, 13),
                 ),
                 Container(
-                  child: customText(s2, Colors.white, 15),
+                  child: customText(s2, Colors.white, 13),
                 ),
               ],
             ),
