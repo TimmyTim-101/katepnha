@@ -377,6 +377,16 @@ class _ContentsState extends State<Contents> {
       );
       resinHintList.add(thisHintWidget);
     }
+    if (resinHintList.isEmpty) {
+      resinHintList.add(
+        Container(
+          height: 25,
+          width: 480,
+          alignment: Alignment.center,
+          child: customText('树脂已不再累积，请尽快消耗~', Colors.white, 20),
+        ),
+      );
+    }
     final List<Widget> recommendWidgetList = [];
     final Set<int> recommendItemList = {};
     final Map<ItemDTO, int> tmpHaveMap = {};
@@ -614,17 +624,18 @@ class _ContentsState extends State<Contents> {
               ],
             ),
           ),
-          Container(
-            width: 410,
-            height: 480,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              border: Border.all(
-                color: Colors.white,
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                border: Border.all(
+                  color: Colors.white,
+                ),
               ),
-            ),
-            child: ListView(
-              children: recommendWidgetList,
+              child: ListView(
+                children: recommendWidgetList,
+              ),
             ),
           ),
         ],
