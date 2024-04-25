@@ -84,10 +84,12 @@ class _ContentsState extends State<Contents> {
 
   TextEditingController getController(ItemDTO item) {
     final TextEditingController r = TextEditingController();
-    final String initialText = haveNumMap.containsKey(item) ? haveNumMap[item].toString() : '0';
+    final String initialText =
+        haveNumMap.containsKey(item) ? haveNumMap[item].toString() : '0';
     r.value = TextEditingValue(
       text: initialText,
-      selection: TextSelection.fromPosition(TextPosition(offset: initialText.length)),
+      selection:
+          TextSelection.fromPosition(TextPosition(offset: initialText.length)),
     );
     return r;
   }
@@ -116,7 +118,12 @@ class _ContentsState extends State<Contents> {
     d60Time = 0;
     dMaxTime = 0;
     todayItemSet = {};
-    final Map<int, List<DungeonDTO>> costDungeonListMap = {0: [], 20: [], 40: [], 60: []};
+    final Map<int, List<DungeonDTO>> costDungeonListMap = {
+      0: [],
+      20: [],
+      40: [],
+      60: [],
+    };
     final DateTime now = DateTime.now();
     int weekday = now.weekday;
     final int hour = now.hour;
@@ -151,7 +158,8 @@ class _ContentsState extends State<Contents> {
     }
     final Map<ItemDTO, List<ItemDTO>> materialPlanListMap = {};
     for (final p in planList) {
-      final List<ItemPairDTO> thisAllMaterial = getMaterialList(p.planType, p.item, p.num);
+      final List<ItemPairDTO> thisAllMaterial =
+          getMaterialList(p.planType, p.item, p.num);
       for (final ip in thisAllMaterial) {
         final int thisLack = mergeLack(ip.itemId);
         if (thisLack > 0) {
@@ -203,7 +211,8 @@ class _ContentsState extends State<Contents> {
     final int weekRemainResin = weekAllResin - d60Time * 60;
     final int otherCostResin = d20Time * 20 + d40Time * 40;
     totalResinNum = d20Time * 20 + d40Time * 40 + d60Time * 60;
-    totalDayNum = weekCostDay + (max(0, otherCostResin - weekRemainResin) / 180).ceil();
+    totalDayNum =
+        weekCostDay + (max(0, otherCostResin - weekRemainResin) / 180).ceil();
     return Container(
       width: MediaQuery.of(context).size.width - 620,
       padding: const EdgeInsets.all(5),
@@ -248,88 +257,116 @@ class _ContentsState extends State<Contents> {
             ],
           ),
           customDivider(),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                customText('不消耗'),
-                const Image(
-                  image: AssetImage(resinImageAddress),
-                  width: 30,
-                  height: 30,
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            expandedAlignment: Alignment.centerLeft,
+            title: Container(
+              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  customText('不消耗'),
+                  const Image(
+                    image: AssetImage(resinImageAddress),
+                    width: 30,
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+            initiallyExpanded: true,
+            children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                child: Wrap(
+                  children: cost00WidgetList,
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            child: Wrap(
-              children: cost00WidgetList,
-            ),
+              ),
+            ],
           ),
           customDivider(),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                customText('20'),
-                const Image(
-                  image: AssetImage(resinImageAddress),
-                  width: 30,
-                  height: 30,
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            expandedAlignment: Alignment.centerLeft,
+            title: Container(
+              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  customText('20'),
+                  const Image(
+                    image: AssetImage(resinImageAddress),
+                    width: 30,
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+            initiallyExpanded: true,
+            children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                child: Wrap(
+                  children: cost20WidgetList,
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            child: Wrap(
-              children: cost20WidgetList,
-            ),
+              ),
+            ],
           ),
           customDivider(),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                customText('40'),
-                const Image(
-                  image: AssetImage(resinImageAddress),
-                  width: 30,
-                  height: 30,
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            expandedAlignment: Alignment.centerLeft,
+            title: Container(
+              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  customText('40'),
+                  const Image(
+                    image: AssetImage(resinImageAddress),
+                    width: 30,
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+            initiallyExpanded: true,
+            children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                child: Wrap(
+                  children: cost40WidgetList,
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            child: Wrap(
-              children: cost40WidgetList,
-            ),
+              ),
+            ],
           ),
           customDivider(),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                customText('60'),
-                const Image(
-                  image: AssetImage(resinImageAddress),
-                  width: 30,
-                  height: 30,
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            expandedAlignment: Alignment.centerLeft,
+            title: Container(
+              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  customText('60'),
+                  const Image(
+                    image: AssetImage(resinImageAddress),
+                    width: 30,
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+            initiallyExpanded: true,
+            children: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                child: Wrap(
+                  children: cost60WidgetList,
                 ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-            child: Wrap(
-              children: cost60WidgetList,
-            ),
+              ),
+            ],
           ),
           customDivider(),
         ],
@@ -343,7 +380,8 @@ class _ContentsState extends State<Contents> {
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
       final DateTime now = DateTime.now();
-      final int remainSeconds = (i - resinNum) * 8 * 60 - (now.difference(refreshTime).inSeconds);
+      final int remainSeconds =
+          (i - resinNum) * 8 * 60 - (now.difference(refreshTime).inSeconds);
       final DateTime finishTime = now.add(Duration(seconds: remainSeconds));
       final String thisRemainHint = durationConvert(remainSeconds);
       final String thisFinishHint = timeConvert(finishTime);
@@ -383,7 +421,7 @@ class _ContentsState extends State<Contents> {
           height: 25,
           width: 480,
           alignment: Alignment.center,
-          child: customText('树脂已不再累积，请尽快消耗~', Colors.white, 20),
+          child: customText('树脂已不再累积，请尽快消耗~'),
         ),
       );
     }
@@ -450,22 +488,46 @@ class _ContentsState extends State<Contents> {
                     Container(
                       width: 150,
                       alignment: Alignment.center,
-                      child: customText(thisItem.name, todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 15),
+                      child: customText(
+                        thisItem.name,
+                        todayItemSet.contains(thisItem.vid)
+                            ? Colors.white
+                            : Colors.white30,
+                        15,
+                      ),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(have(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
+                      child: customText(
+                        have(thisItem).toString(),
+                        todayItemSet.contains(thisItem.vid)
+                            ? Colors.white
+                            : Colors.white30,
+                        12,
+                      ),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(simpleMergeHave(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
+                      child: customText(
+                        simpleMergeHave(thisItem).toString(),
+                        todayItemSet.contains(thisItem.vid)
+                            ? Colors.white
+                            : Colors.white30,
+                        12,
+                      ),
                     ),
                     Container(
                       width: 65,
                       alignment: Alignment.center,
-                      child: customText(need(thisItem).toString(), todayItemSet.contains(thisItem.vid) ? Colors.white : Colors.white30, 12),
+                      child: customText(
+                        need(thisItem).toString(),
+                        todayItemSet.contains(thisItem.vid)
+                            ? Colors.white
+                            : Colors.white30,
+                        12,
+                      ),
                     ),
                   ],
                 ),
@@ -666,13 +728,16 @@ class _ContentsState extends State<Contents> {
         thisMaterialList = (item as CharacterDTO).levelUpDTO!.itemMap[num]!;
         break;
       case PlanType.characterTalent1:
-        thisMaterialList = (item as CharacterDTO).talentLevelUpDTO!.itemMap1[num]!;
+        thisMaterialList =
+            (item as CharacterDTO).talentLevelUpDTO!.itemMap1[num]!;
         break;
       case PlanType.characterTalent2:
-        thisMaterialList = (item as CharacterDTO).talentLevelUpDTO!.itemMap2[num]!;
+        thisMaterialList =
+            (item as CharacterDTO).talentLevelUpDTO!.itemMap2[num]!;
         break;
       case PlanType.characterTalent3:
-        thisMaterialList = (item as CharacterDTO).talentLevelUpDTO!.itemMap3[num]!;
+        thisMaterialList =
+            (item as CharacterDTO).talentLevelUpDTO!.itemMap3[num]!;
         break;
       case PlanType.weaponLevel:
         thisMaterialList = (item as WeaponDTO).levelUpDTO!.itemMap[num]!;
@@ -789,12 +854,14 @@ class _ContentsState extends State<Contents> {
       dayNum = (resinNum / 180).ceil();
       d20Time = d20Time + timeNum;
       totalCondensedNum = totalCondensedNum + (timeNum / 2).ceil();
-    } else if (d.dungeonType == DungeonType.boss || d.dungeonType == DungeonType.mora) {
+    } else if (d.dungeonType == DungeonType.boss ||
+        d.dungeonType == DungeonType.mora) {
       for (final ip in d.dropItemMap) {
         if (((ip.itemId) as MaterialDTO).materialType == GMaterialType.cc) {
           continue;
         }
-        final int thisTimeNum = (max(0, need(ip.itemId) - have(ip.itemId)) / ip.num).ceil();
+        final int thisTimeNum =
+            (max(0, need(ip.itemId) - have(ip.itemId)) / ip.num).ceil();
         timeNum = max(timeNum, thisTimeNum);
       }
       resinNum = timeNum * d.cost;
@@ -810,7 +877,8 @@ class _ContentsState extends State<Contents> {
         if (((ip.itemId) as MaterialDTO).materialType == GMaterialType.cc) {
           continue;
         }
-        final int thisTimeNum = (max(0, need(ip.itemId) - have(ip.itemId)) / ip.num).ceil();
+        final int thisTimeNum =
+            (max(0, need(ip.itemId) - have(ip.itemId)) / ip.num).ceil();
         timeNum = max(timeNum, thisTimeNum);
       }
       resinNum = timeNum * d.cost;
