@@ -257,6 +257,7 @@ class _ContentsState extends State<Contents> {
             ],
           ),
           customDivider(),
+          // todo 关闭折叠后会重新打开
           ExpansionTile(
             tilePadding: EdgeInsets.zero,
             expandedAlignment: Alignment.centerLeft,
@@ -378,7 +379,7 @@ class _ContentsState extends State<Contents> {
     final DateTime now = DateTime.now();
     final String nowString = standardTimeString(now);
     final List<Widget> resinHintList = [];
-    for (int i = (resinNum / 20).floor() * 20 + 20; i <= 160; i += 20) {
+    for (int i = (resinNum / 20).floor() * 20 + 20; i <= 200; i += 20) {
       final DateTime now = DateTime.now();
       final int remainSeconds =
           (i - resinNum) * 8 * 60 - (now.difference(refreshTime).inSeconds);
@@ -577,7 +578,7 @@ class _ContentsState extends State<Contents> {
                       Container(
                         width: 50,
                         alignment: Alignment.center,
-                        child: customText('/ 160'),
+                        child: customText('/ 200'),
                       ),
                       Container(
                         width: 50,
@@ -707,7 +708,7 @@ class _ContentsState extends State<Contents> {
 
   void _changeResinNum(int num) {
     setState(() {
-      if (num == 1 || num == -1 || resinNum >= 160) {
+      if (num == 1 || num == -1 || resinNum >= 200) {
         refreshTime = DateTime.now();
       }
       resinNum = max(0, resinNum + num);
