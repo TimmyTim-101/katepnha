@@ -9,6 +9,7 @@ import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/BaseData/items.dart';
 import 'package:katepnha/DTO/character_dto.dart';
 import 'package:katepnha/DTO/dungeon_dto.dart';
+import 'package:katepnha/DTO/dungeon_material_num_in_weekly_boss_recommend_dto.dart';
 import 'package:katepnha/DTO/item_dto.dart';
 import 'package:katepnha/DTO/item_pair_dto.dart';
 import 'package:katepnha/DTO/material_dto.dart';
@@ -432,10 +433,38 @@ class _ContentsState extends State<Contents> {
     for (final i in allMaterial) {
       tmpHaveMap[i] = have(i);
     }
+    final List<Widget> weeklyBossWidgetList = [];
+    final Map<ItemDTO, DungeonDTO> materialDungeonMap = {};
+    final List<ItemDTO> noConsiderWeeklyBossMaterialList = [];
+    final List<DungeonDTO> noConsiderWeeklyBossList = [];
+    final Map<DungeonDTO, DungeonMaterialNumInWeeklyBossRecommendDTO> weeklyBossTempMap = {};
+    final Map<DungeonDTO, List<ItemDTO>> dungeonMaterialMap = {};
+    final List<DungeonDTO> allWeeklyDungeonList = [];
+    int convertNum = have(i_3010008);
+    for (final d in allDungeon) {
+      if (d.dungeonType == DungeonType.week) {
+        allWeeklyDungeonList.add(d);
+        final DungeonMaterialNumInWeeklyBossRecommendDTO weeklyBossRecommendNum = DungeonMaterialNumInWeeklyBossRecommendDTO();
+        dungeonMaterialMap[d] = [];
+        for (final ip in d.dropItemMap) {
+          final MaterialDTO thisItem = ip.itemId as MaterialDTO;
+          if (thisItem.materialType == GMaterialType.clu) {
+            materialDungeonMap[thisItem] = d;
+            final int thisHaveNum = have(thisItem);
+            final int thisNeedNum = need(thisItem);
+            weeklyBossRecommendNum.materialNumMap[thisItem] = min(thisHaveNum, thisNeedNum);
+            weeklyBossRecommendNum.extraMaterialNum = weeklyBossRecommendNum.extraMaterialNum + max(0, thisHaveNum - thisNeedNum);
+            dungeonMaterialMap[d]!.add(thisItem);
+          }
+        }
+        weeklyBossTempMap[d] = weeklyBossRecommendNum;
+      }
+    }
     for (final p in planList) {
       for (final pp in getMaterialList(p.planType, p.item, p.num)) {
         final ItemDTO thisItem = pp.itemId;
         final int thisNum = pp.num.round();
+        // 计算材料是否充足
         if (recommendItemList.contains(thisItem.vid)) continue;
         if (tmpHaveMap[thisItem]! >= thisNum) {
           tmpHaveMap[thisItem] = tmpHaveMap[thisItem]! - thisNum;
@@ -536,7 +565,220 @@ class _ContentsState extends State<Contents> {
             );
           }
         }
+        // 计算周本BOSS数量
+        if (materialDungeonMap.containsKey(thisItem) && !noConsiderWeeklyBossMaterialList.contains(thisItem)) {
+          final DungeonDTO thisDungeon = materialDungeonMap[thisItem]!;
+          if (noConsiderWeeklyBossList.contains(thisDungeon)) continue;
+          final DungeonMaterialNumInWeeklyBossRecommendDTO thisWeeklyBossTempNum = weeklyBossTempMap[thisDungeon]!;
+          final int thisAvailableNum = thisWeeklyBossTempNum.materialNumMap[thisItem]!;
+          final int thisExtraNum = thisWeeklyBossTempNum.extraMaterialNum;
+          if (thisAvailableNum >= thisNum) {
+            // 可支配数量多于需求数 -> 可支配数量减去需求数
+            thisWeeklyBossTempNum.materialNumMap[thisItem] = thisAvailableNum - thisNum;
+          } else if (thisAvailableNum + min(thisExtraNum, convertNum) >= thisNum) {
+            // 可支配数量不够，但是转换材料足够 -> 可支配数量变0，计算需转化数量，转化材料减转化数量，异梦溶媒减转化数量
+            // 这里没有把可转化材料数量和溶媒数量再做比较，可能存在材料够但是溶媒不够的情况
+            final int thisConvertNum = thisNum - thisAvailableNum;
+            thisWeeklyBossTempNum.extraMaterialNum = thisExtraNum - thisConvertNum;
+            convertNum = convertNum - thisConvertNum;
+            thisWeeklyBossTempNum.materialNumMap[thisItem] = 0;
+          } else {
+            // 转化材料也不够，肯定要打了，直接加入不考虑中
+            noConsiderWeeklyBossMaterialList.add(thisItem);
+            noConsiderWeeklyBossList.add(thisDungeon);
+            weeklyBossWidgetList.add(
+              Container(
+                height: 50,
+                margin: const EdgeInsets.all(5),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      alignment: Alignment.center,
+                      child: Image(
+                        image: AssetImage(thisDungeon.imageAddress),
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                    Container(
+                      width: 150,
+                      alignment: Alignment.center,
+                      child: customText(thisDungeon.name, Colors.white, 15),
+                    ),
+                    Container(
+                      width: 50,
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(need(dungeonMaterialMap[thisDungeon]![0]).toString(), Colors.redAccent, 10),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(have(dungeonMaterialMap[thisDungeon]![0]).toString(), Colors.greenAccent, 10),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 50,
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(need(dungeonMaterialMap[thisDungeon]![1]).toString(), Colors.redAccent, 10),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(have(dungeonMaterialMap[thisDungeon]![1]).toString(), Colors.greenAccent, 10),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 50,
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(need(dungeonMaterialMap[thisDungeon]![2]).toString(), Colors.redAccent, 10),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 25,
+                            alignment: Alignment.center,
+                            child: customText(have(dungeonMaterialMap[thisDungeon]![2]).toString(), Colors.greenAccent, 10),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 40,
+                      alignment: Alignment.center,
+                      child: customText('要打', Colors.redAccent, 15),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+        }
       }
+    }
+    // 对于充足的周本按多余材料由小到大给出
+    List<DungeonDTO> extraWeeklyDungeonList = [];
+    for (DungeonDTO d in allWeeklyDungeonList){
+      if (!noConsiderWeeklyBossList.contains(d)){
+        extraWeeklyDungeonList.add(d);
+      }
+    }
+    extraWeeklyDungeonList.sort((o1, o2) => weeklyBossTempMap[o1]!.extraMaterialNum.compareTo(weeklyBossTempMap[o2]!.extraMaterialNum));
+    for (DungeonDTO d in extraWeeklyDungeonList){
+      weeklyBossWidgetList.add(
+        Container(
+          height: 50,
+          margin: const EdgeInsets.all(5),
+          child: Row(
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                alignment: Alignment.center,
+                child: Image(
+                  image: AssetImage(d.imageAddress),
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+              Container(
+                width: 150,
+                alignment: Alignment.center,
+                child: customText(d.name, Colors.white, 15),
+              ),
+              Container(
+                width: 50,
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(need(dungeonMaterialMap[d]![0]).toString(), Colors.redAccent, 10),
+                    ),
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(have(dungeonMaterialMap[d]![0]).toString(), Colors.greenAccent, 10),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 50,
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(need(dungeonMaterialMap[d]![1]).toString(), Colors.redAccent, 10),
+                    ),
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(have(dungeonMaterialMap[d]![1]).toString(), Colors.greenAccent, 10),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 50,
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(need(dungeonMaterialMap[d]![2]).toString(), Colors.redAccent, 10),
+                    ),
+                    Container(
+                      width: 20,
+                      height: 25,
+                      alignment: Alignment.center,
+                      child: customText(have(dungeonMaterialMap[d]![2]).toString(), Colors.greenAccent, 10),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 40,
+                alignment: Alignment.center,
+                child: customText('佛系', Colors.greenAccent, 15),
+              ),
+            ],
+          ),
+        ),
+      );
     }
     return Container(
       width: 420,
@@ -688,6 +930,7 @@ class _ContentsState extends State<Contents> {
             ),
           ),
           Expanded(
+            flex: 3,
             child: Container(
               margin: const EdgeInsets.fromLTRB(5, 0, 5, 5),
               decoration: BoxDecoration(
@@ -698,6 +941,21 @@ class _ContentsState extends State<Contents> {
               ),
               child: ListView(
                 children: recommendWidgetList,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                border: Border.all(
+                  color: Colors.white,
+                ),
+              ),
+              child: ListView(
+                children: weeklyBossWidgetList,
               ),
             ),
           ),

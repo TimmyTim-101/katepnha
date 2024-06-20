@@ -12,8 +12,10 @@ class DungeonDTO {
   List<ItemPairDTO> dropItemMap = [];
   List<int> time = [];
   int cost = 0;
+  String imageAddress = '';
 
   DungeonDTO(this.vid, this.name, this.subName, this.dungeonType, this.dropItemMap, this.time, this.cost);
+  DungeonDTO.withImage(this.vid, this.name, this.subName, this.dungeonType, this.dropItemMap, this.time, this.cost, this.imageAddress);
 
   Widget getItemInfoWidget() {
     String timeString = '';
