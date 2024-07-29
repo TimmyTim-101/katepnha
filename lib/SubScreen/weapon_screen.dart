@@ -11,6 +11,8 @@ import 'package:katepnha/DTO/weapon_dto.dart';
 import 'package:katepnha/DTO/weapon_list_dto.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
+import '../Utils/random_id_generator.dart';
+
 class WeaponScreen extends StatelessWidget {
   const WeaponScreen({super.key});
 
@@ -474,7 +476,7 @@ class _ContentsState extends State<Contents> {
         return;
       }
       // weapon list
-      final String thisKey = UniqueKey().toString();
+      final String thisKey = getRandomId();
       final WeaponListDTO thisWeaponListDTO = WeaponListDTO(thisKey, weapon, weaponLevelMap[weapon.vid]![1]!, weaponLevelMap[weapon.vid]![2]! - 1);
       weaponList.add(thisWeaponListDTO);
       // action

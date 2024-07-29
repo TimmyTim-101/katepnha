@@ -3,6 +3,7 @@ import 'package:katepnha/BaseData/constants.dart';
 import 'package:katepnha/BaseData/global_vars.dart';
 import 'package:katepnha/BaseData/item_species.dart';
 import 'package:katepnha/Utils/json_util.dart';
+import 'package:katepnha/Utils/random_id_generator.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/DTO/character_dto.dart';
 import 'package:katepnha/DTO/item_dto.dart';
@@ -369,7 +370,7 @@ class _ContentsState extends State<Contents> {
                       planList.removeAt(deleteIndex[i]);
                     }
                     // 添加新信息
-                    final String thisKey = UniqueKey().toString();
+                    final String thisKey = getRandomId();
                     for (int i = characterLevelMap[element.vid]![n1]!; i < characterLevelMap[element.vid]![n2]!; i++) {
                       planList.add(PlanDTO(thisKey, element, planType, i));
                       for (final e in itemMap[i]!) {
@@ -428,7 +429,7 @@ class _ContentsState extends State<Contents> {
                       planList.removeAt(deleteIndex[i]);
                     }
                     // 添加新信息
-                    final String thisKey = UniqueKey().toString();
+                    final String thisKey = getRandomId();
                     for (int i = characterLevelMap[element.vid]![n1]!; i < characterLevelMap[element.vid]![n2]!; i++) {
                       planList.add(PlanDTO(thisKey, element, planType, i));
                       for (final e in itemMap[i]!) {
