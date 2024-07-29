@@ -8,7 +8,7 @@ class WeaponDTO extends ItemDTO {
   WeaponType weaponType = WeaponType.unknown;
   BaseWeaponLevelUpDTO? levelUpDTO;
 
-  WeaponDTO(int vid, int rid, String name, int star, ItemType itemType, String imageAddress, this.weaponType, BaseWeaponLevelUpDTO weaponLevelUpDTO) : super(vid, rid, name, star, itemType, imageAddress) {
+  WeaponDTO(super.vid, super.rid, super.name, super.star, super.itemType, super.imageAddress, this.weaponType, BaseWeaponLevelUpDTO weaponLevelUpDTO) {
     levelUpDTO = weaponLevelUpDTO;
   }
 
