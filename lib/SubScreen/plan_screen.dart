@@ -1130,7 +1130,7 @@ class _ContentsState extends State<Contents> {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 5, 5),
       width: 367,
-      height: 215 * materialRowNum + 59 * planRowNum + 59,
+      height: 200 * materialRowNum + 59 * planRowNum + 89,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         border: Border.all(
@@ -1183,7 +1183,7 @@ class _ContentsState extends State<Contents> {
             ),
           ),
           Container(
-            height: 190 * materialRowNum - 5,
+            height: 200 * materialRowNum - 5,
             width: 365,
             margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
             child: Wrap(
@@ -1210,7 +1210,7 @@ class _ContentsState extends State<Contents> {
     }
     return Container(
       width: 85,
-      height: 185,
+      height: 195,
       margin: const EdgeInsets.fromLTRB(0, 0, 5, 5),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
@@ -1247,7 +1247,7 @@ class _ContentsState extends State<Contents> {
           mergeNumWidget(item),
           Container(
             alignment: Alignment.center,
-            height: 25,
+            height: 35,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: TextField(
               textAlign: TextAlign.center,

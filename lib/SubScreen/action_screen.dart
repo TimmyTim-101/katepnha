@@ -499,7 +499,7 @@ class _ContentsState extends State<Contents> {
       color: frontColor(),
       padding: const EdgeInsets.all(2),
       width: (85 + 5) * allItems.length + 4,
-      height: 185 + 4 + 4,
+      height: 195 + 4 + 4,
       child: Row(
         children: res,
       ),
@@ -513,7 +513,7 @@ class _ContentsState extends State<Contents> {
     }
     return Container(
       width: 85,
-      height: 185,
+      height: 195,
       margin: const EdgeInsets.fromLTRB(0, 0, 5, 5),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
@@ -550,7 +550,7 @@ class _ContentsState extends State<Contents> {
           mergeNumWidget(item),
           Container(
             alignment: Alignment.center,
-            height: 25,
+            height: 35,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: TextField(
               textAlign: TextAlign.center,
