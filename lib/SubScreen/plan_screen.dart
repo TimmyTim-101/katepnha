@@ -213,7 +213,7 @@ class _ContentsState extends State<Contents> {
     return Container(
       width: MediaQuery.of(context).size.width - 620,
       padding: const EdgeInsets.all(5),
-      child: ListView(
+      child: Column(
         children: [
           Column(
             children: [
@@ -251,122 +251,128 @@ class _ContentsState extends State<Contents> {
                   ],
                 ),
               ),
+              customDivider(),
             ],
           ),
-          customDivider(),
-          // todo 关闭折叠后会重新打开
-          ExpansionTile(
-            tilePadding: EdgeInsets.zero,
-            expandedAlignment: Alignment.centerLeft,
-            title: Container(
-              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  customText('不消耗'),
-                  const Image(
-                    image: AssetImage(resinImageAddress),
-                    width: 30,
-                    height: 30,
+          Expanded(
+            child: ListView(
+              children: [
+                // todo 关闭折叠后会重新打开
+                ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  expandedAlignment: Alignment.centerLeft,
+                  title: Container(
+                    margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        customText('不消耗'),
+                        const Image(
+                          image: AssetImage(resinImageAddress),
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            initiallyExpanded: true,
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-                child: Wrap(
-                  children: cost00WidgetList,
+                  initiallyExpanded: true,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                      child: Wrap(
+                        children: cost00WidgetList,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          customDivider(),
-          ExpansionTile(
-            tilePadding: EdgeInsets.zero,
-            expandedAlignment: Alignment.centerLeft,
-            title: Container(
-              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  customText('20'),
-                  const Image(
-                    image: AssetImage(resinImageAddress),
-                    width: 30,
-                    height: 30,
+                customDivider(),
+                ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  expandedAlignment: Alignment.centerLeft,
+                  title: Container(
+                    margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        customText('20'),
+                        const Image(
+                          image: AssetImage(resinImageAddress),
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            initiallyExpanded: true,
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-                child: Wrap(
-                  children: cost20WidgetList,
+                  initiallyExpanded: true,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                      child: Wrap(
+                        children: cost20WidgetList,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          customDivider(),
-          ExpansionTile(
-            tilePadding: EdgeInsets.zero,
-            expandedAlignment: Alignment.centerLeft,
-            title: Container(
-              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  customText('40'),
-                  const Image(
-                    image: AssetImage(resinImageAddress),
-                    width: 30,
-                    height: 30,
+                customDivider(),
+                ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  expandedAlignment: Alignment.centerLeft,
+                  title: Container(
+                    margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        customText('40'),
+                        const Image(
+                          image: AssetImage(resinImageAddress),
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            initiallyExpanded: true,
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-                child: Wrap(
-                  children: cost40WidgetList,
+                  initiallyExpanded: true,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                      child: Wrap(
+                        children: cost40WidgetList,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          customDivider(),
-          ExpansionTile(
-            tilePadding: EdgeInsets.zero,
-            expandedAlignment: Alignment.centerLeft,
-            title: Container(
-              margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  customText('60'),
-                  const Image(
-                    image: AssetImage(resinImageAddress),
-                    width: 30,
-                    height: 30,
+                customDivider(),
+                ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  expandedAlignment: Alignment.centerLeft,
+                  title: Container(
+                    margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        customText('60'),
+                        const Image(
+                          image: AssetImage(resinImageAddress),
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            initiallyExpanded: true,
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
-                child: Wrap(
-                  children: cost60WidgetList,
+                  initiallyExpanded: true,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(30, 5, 5, 0),
+                      child: Wrap(
+                        children: cost60WidgetList,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                customDivider(),
+              ],
+            ),
           ),
-          customDivider(),
         ],
       ),
     );
