@@ -340,6 +340,7 @@ class _ContentsState extends State<Contents> {
                     child: customText('更新日志'),
                   ),
                   // TODO 规划页dungeon按材料排序
+                  updateContainer('24-11-20：适配5.2数据。'),
                   updateContainer('24-10-09：适配5.1数据，调整背包页材料展示顺序。'),
                   updateContainer('24-08-28：适配5.0数据，调整部分布局。'),
                   updateContainer('24-07-30：修复新增事件时判定能否完成的错误问题。'),
