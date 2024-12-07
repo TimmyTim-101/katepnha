@@ -41,6 +41,9 @@ Timer? resinRefreshTimer;
 // 数据库展示内容配置
 int databaseDisplay = 1;
 
+// 服务器时间偏移
+int utcOffset = 8;
+
 Map<String, dynamic> toJson() {
   final Map<String, dynamic> rres = <String, dynamic>{};
   final Map<String, dynamic> allConfigmap = cloneMap(allConfig);
@@ -121,6 +124,8 @@ Map<String, dynamic> toJson() {
 
   res['databaseDisplay'] = databaseDisplay;
 
+  res['utcOffset'] = utcOffset;
+
   allConfigmap[currentAccount] = res;
 
   rres['currentAccount'] = currentAccount;
@@ -159,4 +164,7 @@ void resetData(){
 
   // 数据库展示内容配置
   databaseDisplay = 1;
+
+  // 服务器时间偏移
+  utcOffset = 8;
 }

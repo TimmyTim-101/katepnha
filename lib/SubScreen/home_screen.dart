@@ -8,6 +8,8 @@ import 'package:katepnha/Utils/json_util.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
+import '../Utils/date_util.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -84,7 +86,7 @@ class _ContentsState extends State<Contents> {
     initial();
     // 获取生日信息
     final List<Widget> recentBirthdayCharacterList = [];
-    final DateTime now = DateTime.now();
+    final DateTime now = getNowDateTime();
     final int nowMonth = now.month;
     final int nowDay = now.day;
     final int nowMonthDay = nowMonth * 100 + nowDay;
@@ -98,6 +100,10 @@ class _ContentsState extends State<Contents> {
       if (birthdayCharacterMap.containsKey(i)) {
         for (final c in birthdayCharacterMap[i]!) {
           c as CharacterDTO;
+          Color colorOfBoarding = Colors.white;
+          if(nowMonthDay == c.birthday){
+            colorOfBoarding = Colors.yellowAccent;
+          }
           recentBirthdayCharacterList.add(
             Container(
               height: 159,
@@ -106,7 +112,7 @@ class _ContentsState extends State<Contents> {
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 border: Border.all(
-                  color: Colors.white,
+                  color: colorOfBoarding,
                 ),
               ),
               child: Column(
@@ -264,6 +270,11 @@ class _ContentsState extends State<Contents> {
             ),
             customDivider(),
             Container(
+              margin: const EdgeInsets.fromLTRB(30, 0, 0, 5),
+              child: customText('当前服务器时间：${standardTimeString(getNowDateTime())}'),
+            ),
+            customDivider(),
+            Container(
               margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
               child: Row(
                 children: [
@@ -340,6 +351,7 @@ class _ContentsState extends State<Contents> {
                     child: customText('更新日志'),
                   ),
                   // TODO 规划页dungeon按材料排序
+                  updateContainer('24-12-07：修复时间判断逻辑，针对不在服务器时区的使用者进行时间计算逻辑优化。'),
                   updateContainer('24-11-28：修复5.2新增材料计算不正确的问题。'),
                   updateContainer('24-11-20：适配5.2数据。'),
                   updateContainer('24-10-09：适配5.1数据，调整背包页材料展示顺序。'),

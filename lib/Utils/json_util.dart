@@ -160,4 +160,6 @@ void readMapConfigToInnerDataStructure(Map<String, dynamic> m) {
   refreshTime = DateTime.parse(m['refreshTime']);
 
   databaseDisplay = m['databaseDisplay'];
+
+  utcOffset = m['utcOffset'];
 }

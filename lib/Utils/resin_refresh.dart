@@ -1,8 +1,10 @@
 import 'package:katepnha/BaseData/global_vars.dart';
 
+import 'date_util.dart';
+
 void resinRefresh(){
   final DateTime lastRefreshTime = refreshTime;
-  final DateTime now = DateTime.now();
+  final DateTime now = getNowDateTime();
   if(resinNum >= 200){
     // 超过200的部分不再累计树脂，直接更新上次更新时间
     refreshTime = now;

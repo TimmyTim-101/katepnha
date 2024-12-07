@@ -20,6 +20,8 @@ import 'package:katepnha/Utils/number_convert.dart';
 import 'package:katepnha/custom_style.dart';
 import 'package:katepnha/SubScreen/navigation_screen.dart';
 
+import '../Utils/date_util.dart';
+
 class PlanScreen extends StatelessWidget {
   const PlanScreen({super.key});
 
@@ -123,7 +125,7 @@ class _ContentsState extends State<Contents> {
       40: [],
       60: [],
     };
-    final DateTime now = DateTime.now();
+    final DateTime now = getNowDateTime();
     int weekday = now.weekday;
     final int hour = now.hour;
     if (hour < 4) {
@@ -379,11 +381,11 @@ class _ContentsState extends State<Contents> {
   }
 
   Widget recommendList() {
-    final DateTime now = DateTime.now();
+    final DateTime now = getNowDateTime();
     final String nowString = standardTimeString(now);
     final List<Widget> resinHintList = [];
     for (int i = (resinNum / 20).floor() * 20 + 20; i <= 200; i += 20) {
-      final DateTime now = DateTime.now();
+      final DateTime now = getNowDateTime();
       final int remainSeconds = (i - resinNum) * 8 * 60 - (now.difference(refreshTime).inSeconds);
       final DateTime finishTime = now.add(Duration(seconds: remainSeconds));
       final String thisRemainHint = durationConvert(remainSeconds);
@@ -961,7 +963,7 @@ class _ContentsState extends State<Contents> {
   void _changeResinNum(int num) {
     setState(() {
       if (num == 1 || num == -1 || resinNum >= 200) {
-        refreshTime = DateTime.now();
+        refreshTime = getNowDateTime();
       }
       resinNum = max(0, resinNum + num);
       saveGlobalVarsToFile();
