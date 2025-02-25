@@ -351,8 +351,9 @@ class _ContentsState extends State<Contents> {
                     child: customText('更新日志'),
                   ),
                   // TODO 规划页dungeon按材料排序
-                  updateContainer('24-11-20：修复部分材料显示不正确的问题。'),
-                  updateContainer('24-11-20：适配5.3数据。'),
+                  updateContainer('25-02-25：适配5.4数据。'),
+                  updateContainer('25-02-10：修复部分材料显示不正确的问题。'),
+                  updateContainer('25-01-01：适配5.3数据。'),
                   updateContainer('24-12-07：修复时间判断逻辑，针对不在服务器时区的使用者进行时间计算逻辑优化。'),
                   updateContainer('24-11-28：修复5.2新增材料计算不正确的问题。'),
                   updateContainer('24-11-20：适配5.2数据。'),
