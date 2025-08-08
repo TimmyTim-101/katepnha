@@ -126,6 +126,7 @@ final CharacterDTO i_1010097 = CharacterDTO(1010097, 4112, '伊法', 4, 323, Ite
 final CharacterDTO i_1010098 = CharacterDTO(1010098, 4113, '爱可菲', 5, 608, ItemType.character, 'images/characters/4113.png', ElementType.cryo, WeaponType.pole, i_3080035, g_3050025, g_3020082, i_3040038, CharacterTalentLevelUpDTO(g_3060041, g_3020082, i_3030032)); // todo id
 final CharacterDTO i_1010099 = CharacterDTO(1010099, 4114, '塔利雅', 4, 525, ItemType.character, 'images/characters/4114.png', ElementType.hydro, WeaponType.sword, i_3080007, g_3050009, g_3020010, i_3040038, CharacterTalentLevelUpDTO(g_3060007, g_3020010, i_3030034)); // todo id
 final CharacterDTO i_1010100 = CharacterDTO(1010100, 4115, '丝柯克', 5, 1105, ItemType.character, 'images/characters/4115.png', ElementType.cryo, WeaponType.sword, i_3080050, g_3050025, g_3020082, i_3040035, CharacterTalentLevelUpDTO(g_3060047, g_3020082, i_3030035)); // todo id
+final CharacterDTO i_1010101 = CharacterDTO(1010101, 4116, '伊涅芙', 5, 402, ItemType.character, 'images/characters/4116.png', ElementType.electro, WeaponType.pole, i_3080048, g_3050017, g_3020103, i_3040038, CharacterTalentLevelUpDTO(g_3060053, g_3020103, i_3030033)); // todo id
 
 // 武器
 final WeaponDTO i_2010101 = WeaponDTO(2010101, 11101, '无锋剑', 1, ItemType.weapon, 'images/weapons/11101.png', WeaponType.sword, WeaponStar1LevelUpDTO(g_3020010, g_3020013, g_3070001));
@@ -206,6 +207,7 @@ final WeaponDTO i_2020420 = WeaponDTO(2020420, 12427, '便携动力锯', 4, Item
 final WeaponDTO i_2020421 = WeaponDTO(2020421, 12426, '「究极霸王超级魔剑」', 4, ItemType.weapon, 'images/weapons/12426.png', WeaponType.claymore, WeaponStar4LevelUpDTO(g_3020082, g_3020091, g_3070057));
 final WeaponDTO i_2020422 = WeaponDTO(2020422, 12431, '撼地者', 4, ItemType.weapon, 'images/weapons/12431.png', WeaponType.claymore, WeaponStar4LevelUpDTO(g_3020103, g_3020109, g_3070061));
 final WeaponDTO i_2020423 = WeaponDTO(2020423, 12430, '硕果钩', 4, ItemType.weapon, 'images/weapons/12430.png', WeaponType.claymore, WeaponStar4LevelUpDTO(g_3020100, g_3020112, g_3070069));
+final WeaponDTO i_2020424 = WeaponDTO(2020424, 12432, '拾慧铸熔', 4, ItemType.weapon, 'images/weapons/12432.png', WeaponType.claymore, WeaponStar4LevelUpDTO(g_3020079, g_3020118, g_3070065));
 final WeaponDTO i_2020501 = WeaponDTO(2020501, 12501, '天空之傲', 5, ItemType.weapon, 'images/weapons/12501.png', WeaponType.claymore, WeaponStar5LevelUpDTO(g_3020001, g_3020019, g_3070005));
 final WeaponDTO i_2020502 = WeaponDTO(2020502, 12502, '狼的末路', 5, ItemType.weapon, 'images/weapons/12502.png', WeaponType.claymore, WeaponStar5LevelUpDTO(g_3020007, g_3020022, g_3070009));
 final WeaponDTO i_2020503 = WeaponDTO(2020503, 12503, '松籁响起之时', 5, ItemType.weapon, 'images/weapons/12503.png', WeaponType.claymore, WeaponStar5LevelUpDTO(g_3020004, g_3020013, g_3070001));
@@ -251,6 +253,7 @@ final WeaponDTO i_2030507 = WeaponDTO(2030507, 13511, '赤沙之杖', 5, ItemTyp
 final WeaponDTO i_2030508 = WeaponDTO(2030508, 13512, '赤月之形', 5, ItemType.weapon, 'images/weapons/13512.png', WeaponType.pole, WeaponStar5LevelUpDTO(g_3020082, g_3020097, g_3070057));
 final WeaponDTO i_2030509 = WeaponDTO(2030509, 13513, '柔灯挽歌', 5, ItemType.weapon, 'images/weapons/13513.png', WeaponType.pole, WeaponStar5LevelUpDTO(g_3020037, g_3020097, g_3070057));
 final WeaponDTO i_2030510 = WeaponDTO(2030510, 13514, '香韵奏者', 5, ItemType.weapon, 'images/weapons/13514.png', WeaponType.pole, WeaponStar5LevelUpDTO(g_3020079, g_3020085, g_3070053)); // todo id
+final WeaponDTO i_2030511 = WeaponDTO(2030511, 13515, '支离轮光', 5, ItemType.weapon, 'images/weapons/13515.png', WeaponType.pole, WeaponStar5LevelUpDTO(g_3020100, g_3020118, g_3070061)); // todo id
 final WeaponDTO i_2040101 = WeaponDTO(2040101, 14101, '学徒笔记', 1, ItemType.weapon, 'images/weapons/14101.png', WeaponType.catalyst, WeaponStar1LevelUpDTO(g_3020004, g_3020013, g_3070001));
 final WeaponDTO i_2040201 = WeaponDTO(2040201, 14201, '口袋魔导书', 2, ItemType.weapon, 'images/weapons/14201.png', WeaponType.catalyst, WeaponStar2LevelUpDTO(g_3020004, g_3020013, g_3070001));
 final WeaponDTO i_2040301 = WeaponDTO(2040301, 14301, '魔导绪论', 3, ItemType.weapon, 'images/weapons/14301.png', WeaponType.catalyst, WeaponStar3LevelUpDTO(g_3020001, g_3020013, g_3070001));
