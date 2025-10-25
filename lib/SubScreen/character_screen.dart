@@ -387,7 +387,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: characterLevelMap[element.vid]![n1],
+                initialValue: characterLevelMap[element.vid]![n1],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),
@@ -446,7 +446,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: characterLevelMap[element.vid]![n2],
+                initialValue: characterLevelMap[element.vid]![n2],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),

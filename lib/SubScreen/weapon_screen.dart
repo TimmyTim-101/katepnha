@@ -527,7 +527,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: weaponLevelMap[weapon.vid]![1],
+                initialValue: weaponLevelMap[weapon.vid]![1],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),
@@ -556,7 +556,7 @@ class _ContentsState extends State<Contents> {
                   });
                 },
                 isExpanded: true,
-                value: weaponLevelMap[weapon.vid]![2],
+                initialValue: weaponLevelMap[weapon.vid]![2],
                 style: TextStyle(backgroundColor: backColor()),
                 decoration: const InputDecoration.collapsed(hintText: ''),
               ),
