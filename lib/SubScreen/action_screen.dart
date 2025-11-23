@@ -425,7 +425,9 @@ class _ContentsState extends State<Contents> {
                         builder: (BuildContext context, StateSetter setState) {
                           return Center(
                             child: Material(
-                              child: infoWidgets(element.itemId),
+                              child: infoWidgets(element.itemId, onUpdate: () {
+                                setState(() {});
+                              }),
                             ),
                           );
                         },
@@ -482,7 +484,7 @@ class _ContentsState extends State<Contents> {
     return r;
   }
 
-  Widget infoWidgets(ItemDTO item) {
+  Widget infoWidgets(ItemDTO item, {VoidCallback? onUpdate}) {
     List<ItemDTO> allItems = [item];
     for (final element in allGroup) {
       if (element.groupList.contains(item)) {
@@ -493,7 +495,7 @@ class _ContentsState extends State<Contents> {
     allItems.sort((o1, o2) => o2.vid.compareTo(o1.vid));
     final List<Widget> res = [];
     for (final element in allItems) {
-      res.add(infoWidget(element));
+      res.add(infoWidget(element, onUpdate: onUpdate));
     }
     return Container(
       color: frontColor(),
@@ -506,7 +508,7 @@ class _ContentsState extends State<Contents> {
     );
   }
 
-  Widget infoWidget(ItemDTO item) {
+  Widget infoWidget(ItemDTO item, {VoidCallback? onUpdate}) {
     double fontSize = 18;
     if (item.rid == 202) {
       fontSize = 10;
@@ -555,7 +557,10 @@ class _ContentsState extends State<Contents> {
             child: TextField(
               textAlign: TextAlign.center,
               controller: allController[item],
-              onChanged: (value) => _updateHaveNum(item, value),
+              onChanged: (value) {
+                _updateHaveNum(item, value);
+                if (onUpdate != null) onUpdate();
+              },
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               style: TextStyle(
                 color: Colors.white,
@@ -566,7 +571,7 @@ class _ContentsState extends State<Contents> {
               ),
             ),
           ),
-          mergeContainer(item),
+          mergeContainer(item, onUpdate: onUpdate),
         ],
       ),
     );
@@ -713,7 +718,7 @@ class _ContentsState extends State<Contents> {
     }
   }
 
-  Widget mergeContainer(ItemDTO item) {
+  Widget mergeContainer(ItemDTO item, {VoidCallback? onUpdate}) {
     if (mergeMap.containsKey(item)) {
       return Container(
         margin: const EdgeInsets.fromLTRB(0, 3, 0, 0),
@@ -724,7 +729,10 @@ class _ContentsState extends State<Contents> {
               height: 25,
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () => _minusHave(item),
+                onPressed: () {
+                  _minusHave(item);
+                  if (onUpdate != null) onUpdate();
+                },
                 child: customText('-', Colors.white, 15),
               ),
             ),
@@ -733,7 +741,10 @@ class _ContentsState extends State<Contents> {
               height: 25,
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () => _addHave(item),
+                onPressed: () {
+                  _addHave(item);
+                  if (onUpdate != null) onUpdate();
+                },
                 child: customText('+', Colors.white, 15),
               ),
             ),
@@ -742,7 +753,10 @@ class _ContentsState extends State<Contents> {
               height: 25,
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () => _merge(item, mergeMap[item]!),
+                onPressed: () {
+                  _merge(item, mergeMap[item]!);
+                  if (onUpdate != null) onUpdate();
+                },
                 child: customText('合', Colors.white, 15),
               ),
             ),
@@ -760,7 +774,10 @@ class _ContentsState extends State<Contents> {
               height: 25,
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () => _minusHave(item),
+                onPressed: () {
+                  _minusHave(item);
+                  if (onUpdate != null) onUpdate();
+                },
                 child: customText('-', Colors.white, 15),
               ),
             ),
@@ -769,7 +786,10 @@ class _ContentsState extends State<Contents> {
               height: 25,
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () => _addHave(item),
+                onPressed: () {
+                  _addHave(item);
+                  if (onUpdate != null) onUpdate();
+                },
                 child: customText('+', Colors.white, 15),
               ),
             ),
