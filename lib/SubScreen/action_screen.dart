@@ -420,7 +420,6 @@ class _ContentsState extends State<Contents> {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      // todo:弹出窗口没有更新
                       return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
                           return Center(
