@@ -948,7 +948,7 @@ final MaterialDTO i_3080052 = MaterialDTO(3080052, 101257, '便携轴承', 1, It
 final MaterialDTO i_3080053 = MaterialDTO(3080053, 101261, '霜盏花', 1, ItemType.material, 'images/materials/101261.png', GMaterialType.spec);
 final MaterialDTO i_3080054 = MaterialDTO(3080054, 101263, '月落银', 1, ItemType.material, 'images/materials/101263.png', GMaterialType.spec);
 final MaterialDTO i_3080055 = MaterialDTO(3080055, 101266, '冬凌草', 1, ItemType.material, 'images/materials/101266.png', GMaterialType.spec);
-final MaterialDTO i_3080056 = MaterialDTO(3080055, 101269, '松珀香', 1, ItemType.material, 'images/materials/101269.png', GMaterialType.spec);
+final MaterialDTO i_3080056 = MaterialDTO(3080056, 101269, '松珀香', 1, ItemType.material, 'images/materials/101269.png', GMaterialType.spec);
 
 // 秘境
 // 特产采集
