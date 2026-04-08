@@ -350,6 +350,7 @@ class _ContentsState extends State<Contents> {
                     alignment: Alignment.centerLeft,
                     child: customText('更新日志'),
                   ),
+                  updateContainer('26-04-08：适配6.5数据。'),
                   updateContainer('26-03-06：适配6.4数据。'),
                   updateContainer('26-01-14：适配6.3数据。'),
                   updateContainer('25-12-03：适配6.2数据。'),
