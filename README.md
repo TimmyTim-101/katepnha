@@ -1,5 +1,10 @@
 # katepnha
 
+## 重要提醒
+> [!IMPORTANT]
+> 项目升级至[魔导KatepиHa](https://github.com/TimmyTim-101/HexereiKatepnha)<br>
+> 本项目不再更新!
+
 原神（Genshin Impact）数据库与材料规划
 
 灵感来源：[seelie.me](https://seelie.me/)
